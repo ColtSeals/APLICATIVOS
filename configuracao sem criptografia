@@ -1270,17 +1270,11 @@ function menuclose()
 
    }	
    
-   async function loaderstart()
+async function loaderstart()
    {
-           var a = localStorage['loadscreen_data'];
-           if(a == undefined || a == "default")
-           {
-             $('#gettingglobal').append('<div id="splashscreen"> <div class="containerzz"><div class="ringplus"></div><div class="ringplus"></div><div class="ringplus"></div><p>Preparando...</p></div> </div>');
-           }
-           $('#gettingglobal').append('<style>.lds-ringx { display: inline-block; position: absolute; display:none; top: -13px; left: -13px; } .lds-ringx div { box-sizing: border-box; display: block; position: absolute; width: 160px; height: 161px; margin: 8px; border: 4px solid #1f312f; border-radius: 50%; animation: lds-ringx 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite; border-color: #3ab757 #41b73a #69b73a #80b73a; } .lds-ringx div:nth-child(1) { animation-delay: -0.45s; } .lds-ringx div:nth-child(2) { animation-delay: -0.3s; } .lds-ringx div:nth-child(3) { animation-delay: -0.15s; } @keyframes lds-ringx { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>');
-	       
-       /*
-        setTimeout(function(){  $("#textload").text("Iniciando libs..."); }, 200);
+     
+        $('#gettingglobal').append('<style>.lds-ringx { display: inline-block; position: absolute; display:none; top: -13px; left: -13px; } .lds-ringx div { box-sizing: border-box; display: block; position: absolute; width: 160px; height: 161px; margin: 8px; border: 4px solid #1f312f; border-radius: 50%; animation: lds-ringx 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite; border-color: #3ab757 #41b73a #69b73a #80b73a; } .lds-ringx div:nth-child(1) { animation-delay: -0.45s; } .lds-ringx div:nth-child(2) { animation-delay: -0.3s; } .lds-ringx div:nth-child(3) { animation-delay: -0.15s; } @keyframes lds-ringx { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style><div id="splashscreen" style="background: rgb(12 11 16);position: absolute;height: 100%;width: 100%;z-index: 1000;/* display: none; */"><div class="lds-ringx" style="-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 22px;transform: translate(-50%, -50%);position: absolute;top: 56%;left: 50%;width: 200px;display: block;filter: invert(1);height: 34px;"><center><div style="position: relative;height: 61px;width: 61px;border: 3px solid #222;border-color: #000000 #9c27b0 #673ab7 #3f51b5;filter: invert(1);margin: 0px;border-radius: 50%;"></div></center></div><div class="" id="textload" style="color: #b9b9b9;position: absolute;width: 100%;z-index: 2;left: 50%;top: 67%;-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 17px;transform: translate(-50%, -50%);">Iniciando</div><img class="atlimg animated" src="pictures/footer.png" style="position: absolute; z-index: 2; left: 50.1%; top: 58%; -webkit-transform: translate(-50%, -50%); text-align: center; font-size: 22px; height: 21px; transform: translate(-50%, -50%);"> </div>');
+        setTimeout(function(){  $("#textload").text("Iniciando NERDS VPN..."); }, 200);
         setTimeout(function(){  $("#textload").text("Verificando espaço..."); }, 400);
         setTimeout(function(){  $("#textload").text("Verificando dispositivo..."); }, 600);
         setTimeout(function(){  $("#textload").text("Verificando hardware..."); }, 700);
@@ -1291,10 +1285,7 @@ function menuclose()
         setTimeout(function(){  $("#textload").text("Iniciando recursos..."); }, 1900);
         setTimeout(function(){  $("#textload").text("Android wake..."); }, 2150);
         setTimeout(function(){  $("#textload").text("Tudo pronto, aguarde!"); }, 2300);
-        */
-        setTimeout(function(){ 
-        $(".containerzz").animate({ 'zoom': 1.2 }, 500); }, 2100);
-        setTimeout(function(){  $("#splashscreen").fadeOut(100); }, 2500);
+        setTimeout(function(){  $("#splashscreen").fadeOut(1000); }, 2100);
    }
 
    async function loadcontent()
