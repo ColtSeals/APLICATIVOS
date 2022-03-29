@@ -1,0 +1,2758 @@
+<meta name='viewport' content='width=device-width, initial-scale=1.0'><style>@font-face {
+    font-family: 'Palanquin Dark';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(pictures/atlantus.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }@import url('https://fonts.googleapis.com/css2?family=Licorice&family=Lobster&display=swap');
+  body
+{
+  overflow: hidden;
+  position: fixed;
+  font-family: 'Palanquin Dark', sans-serif;
+  background: linear-gradient( 
+45deg , black, #1a0b14, #160910);
+  color: white;
+  margin: 0px;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.notification
+{
+  background: linear-gradient(45deg, #6e3033, #810d52);
+    transform: translate(0%, -50%);
+    position: fixed;
+    right: 5px;
+    top: 88%;
+    height: 50px;
+    width: max-content;
+    color: white;
+    text-align: left;
+    padding-left: 19px;
+    padding-right: 15px;
+    z-index: 7;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+#logsview
+{
+  position: absolute;
+  top: 46px;
+  left: 0px;
+  height: 69%;
+  display: none;
+  font-size: 14px;
+  font-family: sans-serif;
+  width: 100%;
+  text-align: left;
+  color: #ccc;
+  overflow: scroll;
+  padding-left: 20px;
+}
+
+.atlimg.animated {
+    -webkit-animation: filter-animation 5s infinite;
+    animation: filter-animation 5s infinite;
+}
+@-webkit-keyframes filter-animation {
+    0% {
+      -webkit-filter: hue-rotate(0deg);
+    }
+    
+    40% {
+      -webkit-filter: hue-rotate(100deg);
+    }
+    
+      76% {
+        -webkit-filter: hue-rotate(
+    241deg);
+    }
+    100% {
+      -webkit-filter: hue-rotate(
+  343deg);
+  }
+  }
+  
+  @keyframes filter-animation {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    
+    50% {
+      filter: hue-rotate(100deg);
+    }
+    86% {
+      filter: hue-rotate(
+  241deg);
+  }
+  100% {
+    filter: hue-rotate(
+  343deg);
+  }
+    
+  }
+
+  .demotxt
+  {
+    position: fixed; 
+    -webkit-transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
+     left: 50%; top: 50%;
+      font-size: 7vw; width: 85%; 
+      text-shadow: 0px 0px 5px black;
+  }
+  @keyframes demo {
+    0% {
+    box-shadow: 0px 0px 0px 2px #ff004c;;
+    }
+    25% {
+      box-shadow: 0px 0px 0px 2px #8a2b47;;
+    }
+    75% {
+      box-shadow: 0px 0px 0px 2px #4b242f;;
+    }
+    100% {
+      box-shadow: 0px 0px 0px 2px #972b4c;;
+    }
+}
+
+  @keyframes shake {
+    0% {
+      transform: translate(-50%, -50%) rotate(
+    0deg);
+      filter: drop-shadow(2px 4px 16px red);
+    }
+    25% {
+      transform: translate(-50%, -50%) rotate(
+    -1deg);
+      filter: drop-shadow(2px 4px 6px rgb(197, 12, 43));
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(
+    1deg);
+      filter: drop-shadow(2px 4px 6px darkred);
+    }
+    75% {
+      transform: translate(-50%, -50%) rotate(
+    -1deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(
+    -1deg);
+    }
+}
+
+.hshakex {
+  animation: shakex 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.hshake {
+  animation: shake 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.hshakez {
+  animation: shakez 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+
+
+@keyframes shakez {
+  0% {
+    transform:translate(-50%, -50%) rotate(
+  0deg);
+    filter: drop-shadow(2px 5px 16px rgb(204, 167, 167));
+  }
+  25% {
+    transform:translate(-50%, -50%) rotate(
+  -1deg);
+    filter: drop-shadow(2px 4px 6px rgb(87, 156, 196));
+  }
+  50% {
+    transform:translate(-50%, -50%)  rotate(
+  1deg);
+    filter: drop-shadow(2px 4px 6px rgb(195, 201, 159));
+  }
+  75% {
+    transform:translate(-50%, -50%) rotate(
+  -1deg);
+  }
+  100% {
+    transform:translate(-50%, -50%) rotate(
+  -1deg);
+  }
+}
+
+  @keyframes shakex {
+    0% {
+      transform: rotate(
+    0deg);
+      filter: drop-shadow(2px 4px 16px red);
+    }
+    25% {
+      transform: rotate(
+    -1deg);
+      filter: drop-shadow(2px 4px 6px rgb(197, 12, 43));
+    }
+    50% {
+      transform:  rotate(
+    1deg);
+      filter: drop-shadow(2px 4px 6px darkred);
+    }
+    75% {
+      transform: rotate(
+    -1deg);
+    }
+    100% {
+      transform: rotate(
+    -1deg);
+    }
+}
+
+#connecting
+{   
+  display:  none;
+    margin-left: 7px;
+    color: #b7344a;
+}
+#connected
+{
+	display:none;
+    color: #7fffdc;
+}
+.lds-ring {
+    display: inline-block;
+       position: absolute;
+       display:none;
+       top: -13px;
+       left: -13px;
+   }
+   .lds-ring div {
+       box-sizing: border-box;
+       display: block;
+       position: absolute;
+       width: 160px;
+       height: 161px;
+       margin: 8px;
+       border: 4px solid #1f312f;
+       border-radius: 50%;
+       animation: lds-ring 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+       border-color: #3ab757 #41b73a #69b73a #80b73a;
+   }
+   .lds-ring div:nth-child(1) {
+     animation-delay: -0.45s;
+   }
+   .lds-ring div:nth-child(2) {
+     animation-delay: -0.3s;
+   }
+   .lds-ring div:nth-child(3) {
+     animation-delay: -0.15s;
+   }
+   @keyframes lds-ring {
+     0% {
+       transform: rotate(0deg);
+     }
+     100% {
+       transform: rotate(360deg);
+     }
+   }
+   .lds-dual-ring {
+    display: inline-block;
+       width: 80px;
+       height: 80px;
+       position: absolute;
+       margin-left: -35px;
+       margin-top: 1px;
+   }
+   .lds-dual-ring:after {
+     content: " ";
+       display: block;
+       width: 17px;
+       height: 17px;
+       margin: 8px;
+       border-radius: 50%;
+       border: 2px solid #fff;
+       border-color: #fff #fff5f536 #fff white;
+       animation: lds-dual-ring 1.2s linear infinite;
+   }
+   @keyframes lds-dual-ring {
+     0% {
+       transform: rotate(0deg);
+     }
+     100% {
+       transform: rotate(360deg);
+     }
+   }
+
+.lds-dual-ring {
+ display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    margin-left: -35px;
+    margin-top: 1px;
+}
+.lds-dual-ring:after {
+  content: " ";
+    display: block;
+    width: 17px;
+    height: 17px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-color: #fff #fff5f536 #fff white;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.flagserver
+{
+  height: 32px;
+  position: absolute;
+  left: 11px;
+  top: 10px;
+}
+.substatus
+{
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    left: 7px;
+    top: 0px;
+}
+.statusserver
+{
+  position: absolute;
+  width: 100%;
+  top: 113px;
+  font-size: 16px;
+  color: #9e9e9e;
+  display: inline-block;
+  left: 0px;
+}
+
+.arrowudp
+{
+  position: absolute;
+    right: 13px;
+    height: 18px;
+    top: 18px;
+    filter: invert(1);
+}
+
+.arrowserver
+{
+	position: absolute;
+    right: 13px;
+    height: 18px;
+    top: 18px;
+    filter: invert(1);
+}
+
+.descserver
+{
+  width: 59%;
+  text-align: left;
+  height: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  top: 23px;
+  font-size: 12px;
+  left: 57px;
+  color: #cccc;
+}
+
+.focuinauth
+{    position: fixed;
+  background: #00000017;
+  height: 200%;
+  width: 100%;
+  top: -176px;
+  z-index: 1;
+  left: 0px;
+  backdrop-filter: blur(0.5px);
+  display:none;
+}
+
+.focuinserver
+{
+  backdrop-filter: blur(2px);
+  height: 200%;
+  width: 100%;
+  position: fixed;
+  background: #0000006e;
+  display:none;
+  left: 0px;
+  top: -248px;
+  z-index: 4;
+}
+.nameserver
+{
+  position: absolute;
+  top: 3px;
+  font-size: 16px;
+  width: 64%;
+  text-align: left;
+  left: 57px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.selectedserver
+{
+  background: #080607ad;
+  width: 64%;
+  height: 35px;
+  border-radius: 7px;
+  z-index: 5;
+  padding: 9px;
+  position: relative;
+  top: -9px;
+  display: inline-block;
+}
+
+#menuexpand
+{
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  bottom: 0px;
+  display: none;
+  width: 298px;
+  padding-left: 11px;
+  background: #10080ef2;
+  z-index: 4;
+}
+
+.connectbt
+{
+  width: 83%;
+  margin-top: 39px;
+  padding: 10px;
+  border: 2px solid #431f33;
+  background: #0d070b;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px #331827;
+}
+
+.inputmax
+{
+  padding: 11px;
+    width: 90%;
+    font-size: 19px;
+    background: linear-gradient( 
+45deg, #180b12, #40191c5c);
+    border: 0;
+    color: #acacac;
+    position: relative;
+    top: 27px;
+    border-radius: 8px;
+    text-shadow: 6px 0px 20px #833547;
+}
+
+
+#nrlixuser
+{
+  background: linear-gradient( 
+    181deg
+    , #0a09097a, transparent);
+        width: 92%;
+        height: 336px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        position: fixed;
+        border-radius: 18px;
+}
+
+#logsbar
+{
+  
+  position: absolute;
+  bottom: -1px;
+  left: -2px;
+  height: 90px;
+  font-size: 11px;
+  transition: width 2s, height 0.8s;
+  width: 100%;
+  text-align: center;    z-index: 5;
+  background: #0000004d;
+  color: #ccc;
+  border: 2px solid #160f0fd1;
+  overflow: visible;
+  border-radius: 6px;
+}
+
+.presshere
+{
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 79%;
+  left: 150%;
+  font-size: 18px;
+  width: 330px;
+  text-align: center;
+}
+
+
+
+.freeimg
+{
+	height: 40px;
+    width: 40px;
+    background: #ffffff4d url(pictures/crown.png);
+    background-repeat: no-repeat;
+    background-position: 5px;
+    border-radius: 60px;
+    position: absolute;
+    top: 9px;
+    left: 6px;
+}
+
+.freetxtsmall
+{
+	    position: absolute;
+    left: 58px;
+    top: 26px;
+    color: #ccc;
+    font-size: 12px;
+}
+.freetxt
+{
+	position: absolute;
+    left: 58px;
+    top: 4px;
+    font-size: 17px;
+}
+
+.header
+{
+	position: fixed;
+    top: 57px;
+	 left: 0px; 
+	 width: 100%;
+	 z-index:3;
+	 text-align: center;
+}
+
+.startfree
+{
+    width: 300px;
+    height: 60px;
+    background: #4b0e79;
+    position: absolute;
+    left: 50%;
+    bottom: 27px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.centerbody
+{
+    background: url(pictures/map.png);
+    position: absolute;
+    opacity: 0.03;
+    height: 495px;
+    width: 100%;
+    z-index: 1;
+    left: 50%;
+    background-size: 200% 100%;
+    background-position-x: -120px;
+    top: 55%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#application
+{
+    display: none;
+}
+.menuiconx
+{
+	    position: absolute;
+    right: 19px;
+    filter: invert(1);
+    top: 44px;
+    height: 24px;
+}
+
+#appname
+{
+  font-size: 0px;
+  color: #ff3434;
+}
+
+.pingserver
+{
+	 position: absolute;
+    right: 14px;
+    font-size: 13px;
+    color: #ccc;
+}
+
+.premiumserver
+{
+	display:none;
+}
+
+.bronzeserver
+{
+	display: none;
+}
+
+.freeserver
+{
+}
+
+.goldserver
+{
+	display: none;
+}
+
+.recommendserver
+{
+	display: none;
+}
+
+.greenping
+{
+	  background: #49ff50;
+    width: 5px;
+    height: 13px;
+    position: absolute;
+    right: -8px;
+    border-radius: 55px;
+    top: 7px;
+}
+.svbubble
+{
+  background: #160e18;
+  width: 88%;
+  transform: translate(-50%, 0%);
+  left: 45%;
+  height: 31px;
+  border-radius: 8px;
+  top: 6px;
+  margin-bottom: 7px;
+  padding: 9px;
+  position: relative;
+}
+
+.typeserver
+{
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+    top: 20px;
+
+}
+.userprofile
+{
+	    background: url(pictures/149071.png);
+    position: relative;
+    height: 80px;
+    width: 220px;
+    background-size: 80px 80px;
+    border-bottom: 1px solid #2b3548;
+    background-repeat: no-repeat;
+    left: 40px;
+    top: 100px;
+    padding-bottom: 50px;
+    background-position-x: 65px;
+}
+
+.descudp
+{
+  left: 14px;
+  font-family: sans-serif;
+  top: 27px;
+}
+
+#serverlist
+{
+  position: fixed;
+  top: 56px;
+  left: 2.5%;
+  display: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 95%;
+  background: #080607ad;
+  height: 39vh;
+  padding-bottom: 100px;
+  z-index: 8;
+  border-radius: 6px;
+}
+
+.userid
+{
+	    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #909090;
+}
+
+.userexp
+{
+	    position: absolute;
+        bottom: 23px;
+    color: #8e8e8e;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+.menulist
+{
+	position: absolute;
+    color: #adadaf;
+    top: 275px;
+    left: 52px;
+}
+.menuicon
+{
+	position: absolute;
+    left: 19px;
+    filter: invert(1);
+    top: 11px;
+    height: 24px;
+}
+
+.menutxt
+{
+  position: relative;
+  margin-bottom: 30px;
+  margin-left: -38px;
+}
+.rightbt
+{
+  position: absolute;
+  right: 8px;
+  border-radius: 5px;
+  transform: rotate( 
+0deg
+);
+  top: 8px;
+  background: #0806076b;
+  text-align: center;
+  width: max-content;
+  padding: 4px;
+}
+
+.menuicond
+{
+	 position: absolute;
+    height: 18px;
+    left: -27px;
+    top: 6px;
+    filter: invert(1);
+    opacity: 0.77;
+}
+.crowimg
+{
+  height: 20px;
+  position: relative;
+  left: 11px;
+  top: 0px;
+  display: inline-block;
+}
+
+.activebt
+{
+    position: relative;
+    top: 14px;
+    padding: 5px;
+    display: inline-block;
+    background: #3f51b5;
+    width: 100px;
+    border-radius: 5px;
+}
+.textboost
+{
+    font-size: 14px;
+        color: #e6e6e6;
+}
+.titleboost
+{
+    margin-top: -59px;
+        font-size: 24px;
+        color: #ffa382;
+}
+.bodyboost
+{
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #2b1b21c2;
+  height: 350px;
+  width: 330px;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.atlantusoverlay
+{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(4px);
+    background: rgb(0 0 0 / 61%);
+    z-index: 5;
+}
+#boostmode
+{
+    display:none;
+    position: absolute; height: 100%;
+     width: 100%; 
+     backdrop-filter: blur(4px);
+     background: rgb(0 0 0 / 61%); z-index: 5;
+}
+#connectedpl
+{
+    display:none;
+    position: absolute; height: 100%;
+     width: 100%; 
+     backdrop-filter: blur(4px);
+     background: rgb(0 0 0 / 61%); z-index: 5;
+}
+#storagemode
+{
+    display:none;
+    position: absolute; height: 100%;
+     width: 100%; background: rgba(0, 0, 0, 0.76); z-index: 5;
+}
+.protxt
+{
+  color: #dadada;
+  font-weight: 100;
+  display: inline-block;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  left: 0px;
+}</style><script>
+////velocidade de transição, quanto maior mais demora e pode lagar mais////
+let transitionspeed = 50;
+
+
+
+///aqui é onde abre e fecha o menu
+function menuaction()
+{
+		atlantuseffectleft("#menuexpand");
+}
+
+function termos()
+{
+  atlantuseffectcenter("#termos");
+}
+
+function boostmode()
+{
+	atlantuseffectcenter("#boostmode");
+}
+
+//Ativar boostmode
+function acboostmode()
+{
+  //requestboost();
+	atlantuseffectcenter("#boostmode");
+}
+
+function storagemode()
+{
+  atlantushide("#storagemode");
+  requestwrite();
+}
+
+//aqui trabalha a mudança de servidor
+
+function udpchange()
+{
+  atlantusdropudp();
+}
+
+function serverchange()
+{
+	atlantusdropserver();
+}
+
+
+///Finaliza a tela de login userssh
+function authfinishu()
+{
+  /*
+	atlantuslogclear();
+	atlantusloginsetu(2);
+	atlantuseffectcenter("#authuser");
+	atlantushide("#authtype");
+	atlantushide("#wronguser");
+  subscribecache_load();
+  */
+  
+	atlantushide("#wronguser");
+         $('#nrlixuser').addClass('hshake');
+          setTimeout(function(){ $('#nrlixuser').removeClass('hshake');}, 700); 
+   $("#wrongaccess").fadeIn(10);
+}
+
+///abre a tela de seleção de login
+function auth()
+{
+	atlantuseffectcenter("#authtype");
+	//atlantuseffectleft("#menuexpand");
+}
+
+
+///aqui inicia a vpn
+function startvpn()
+{
+
+}
+
+
+///aqui para a vpn
+function stopvpn()
+{
+
+}
+
+///Abrir contato
+function opencontact()
+{
+  contactview();
+}
+
+//aqui carrega a lista de servidores e insere
+function loadservers()
+{
+
+}
+
+
+///aqui busca o cache e insere na input
+function loadcachetoken()
+{
+
+}
+
+//Fechar menu ao clicar em algo
+function menuclose()
+{
+	atlantuseffectleft("#menuexpand");
+}
+
+</script>
+
+
+<script>
+
+	//ATLANTUS SIDE
+	//ATLANTUS SIDE
+	//ATLANTUS SIDE
+    var atlantus_cc;
+    var host = "";
+    var ip = "";
+    var port = "";
+    var udpkey = "";
+    var runid = "";
+    var token = "";
+    var udpport = "7300";
+    var logintype = 1; // 0 token, 1 userssh
+    var hashu;
+    var hashp;
+    var contatourl = "";
+    var type = "";
+    var tokenlast = "";
+    var usersshlast;
+    var passsshlast;
+    var udpfw;
+    var udpaddress = "127.0.0.1:7300";
+    var status = "";
+    var lcint = 0;
+    var ovpnative;
+    var ovpnssl;
+    var ovpntcp;
+    var ovpntxt;
+    var usercheck = false;
+    var proxyip;
+    var deviceid = "";
+    var proxyport;
+    var snihost;
+    var istest = false;
+    var lastprofilecat = 0;
+    var finishauth = 0;
+    var dnsone = "";
+    var dnstwo = "";
+    var lastsubscribe = "";
+    var ryzennew = "";
+    var ryzennewx = "";
+    var animateperm = true;
+    var laststatus = "";
+    var hostapp = "";
+
+	(function(){
+    
+	    var tId = setInterval(function() {
+	        if (document.readyState == "complete") onComplete()
+	    }, 11);
+	    function onComplete(){
+	            clearInterval(tId);
+              loaderstart();
+              atlantus_key();
+              setInterval( async function(){ core(); }, 150);
+              setTimeout(function(){  loadcontent(); }, 100);
+              setTimeout(function(){  initupdate(); }, 465);
+	    };
+	})()
+
+  function atlantus_key(){
+                var rawFile = new XMLHttpRequest();
+                rawFile.open("GET", "atlantus_key.cc", false);
+                rawFile.onreadystatechange = function ()
+                {
+                    if(rawFile.readyState === 4)
+                    {
+                        if(rawFile.status === 200 || rawFile.status == 0)
+                        {
+                            var allText = rawFile.responseText;
+                            var compiled = allText.trim();
+                            compiled = japanmake(compiled);
+                            compiled = reversePure(compiled);
+                            atlantus_cc = compiled;
+                            atlantus_cc = atob(atlantus_cc);
+                            console.log(atlantus_cc);
+	                          var splitNamed = atlantus_cc.split("--------");
+                            var splitNamed2 = splitNamed[1].split("@@@@");
+                            hostapp = splitNamed2[0];
+                            hashu = splitNamed2[1];
+                            hashp = splitNamed2[2];
+                            hashutmp = splitNamed2[1];
+                            hashptmp = splitNamed2[2];
+                            contatourl = splitNamed2[3];
+                            if(splitNamed2[4] == 0)
+                            {
+                              $(".hsharez").fadeOut(0);
+                            }
+                      }
+                    }
+                }
+                rawFile.send(null);
+      loadtheme();
+
+   }	
+   
+   async function loaderstart()
+   {
+     
+        $('#gettingglobal').append('<style>.lds-ringx { display: inline-block; position: absolute; display:none; top: -13px; left: -13px; } .lds-ringx div { box-sizing: border-box; display: block; position: absolute; width: 160px; height: 161px; margin: 8px; border: 4px solid #1f312f; border-radius: 50%; animation: lds-ringx 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite; border-color: #3ab757 #41b73a #69b73a #80b73a; } .lds-ringx div:nth-child(1) { animation-delay: -0.45s; } .lds-ringx div:nth-child(2) { animation-delay: -0.3s; } .lds-ringx div:nth-child(3) { animation-delay: -0.15s; } @keyframes lds-ringx { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>');
+        $('#gettingglobal').append('<div id="splashscreen" style="background: rgb(20 10 15);position: absolute;height: 100%;width: 100%;z-index: 1000;/* display: none; */"><div class="lds-ringx" style="-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 22px;transform: translate(-50%, -50%);position: absolute;top: 56%;left: 50%;width: 200px;display: block;filter: hue-rotate(300deg) drop-shadow(1px 1px 4px red);height: 34px;"><center><div style="position: relative;height: 61px;width: 61px;border: 3px solid #222;border-color: #000000 #9c27b0 #673ab7 #3f51b5;filter: invert(1);margin: 0px;border-radius: 50%;"></div></center></div><div class="" id="textload" style="color: #b9b9b9;position: absolute;width: 100%;z-index: 2;left: 50%;top: 67%;-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 0px;transform: translate(-50%, -50%);">Tudo pronto, aguarde!</div><div style=" position: absolute; z-index: 2; left: 50.1%; top: 54.5%; -webkit-transform: translate(-50%, -50%); text-align: center; font-size: 36px; height: 21px; transform: translate(-50%, -50%); ">⌛</div> </div>');
+       /*
+        setTimeout(function(){  $("#textload").text("Iniciando libs..."); }, 200);
+        setTimeout(function(){  $("#textload").text("Verificando espaço..."); }, 400);
+        setTimeout(function(){  $("#textload").text("Verificando dispositivo..."); }, 600);
+        setTimeout(function(){  $("#textload").text("Verificando hardware..."); }, 700);
+        setTimeout(function(){  $("#textload").text("Verificando background..."); }, 900);
+        setTimeout(function(){  $("#textload").text("Verificando sistema..."); }, 1100);
+        setTimeout(function(){  $("#textload").text("Checagem de violação..."); }, 1400);
+        setTimeout(function(){  $("#textload").text("Otimizando..."); }, 1600);
+        setTimeout(function(){  $("#textload").text("Iniciando recursos..."); }, 1900);
+        setTimeout(function(){  $("#textload").text("Android wake..."); }, 2150);
+        setTimeout(function(){  $("#textload").text("Tudo pronto, aguarde!"); }, 2300);
+        */
+        setTimeout(function(){  $("#splashscreen").fadeOut(600); }, 2300);
+   }
+
+   async function loadcontent()
+   {								
+    subscribecache_load();
+    profilecache_load();
+    logincache_load();
+   }
+
+  function passwordprotect()
+  {
+      var x = "User-agent header sent: " + navigator.userAgent;
+      console.log("himan" + x);
+        $(".nrlixpass").prop("type", "password");
+        $('.nrlixpass').click(function(e) {
+          $(".nrlixpass").prop("type", "text");
+          return false;
+        });
+        $('.nrlixpass').on('focusout', function () {
+        $(".nrlixpass").prop("type", "password");
+        });
+        
+        $('.logoapp').click(function(e) { 
+          $('.logoapp').addClass('hshakez');
+          setTimeout(function(){ $('.logoapp').removeClass('hshakez');}, 700); 
+          initupdate();
+          return false;
+        });
+        $('#appname').click(function(e) {
+          return false;
+        });
+  }
+  
+ async function loadtheme()
+   {
+    encrypted = localStorage['theme_data'];
+     try
+    {
+    if(encrypted == ""){}
+      else{
+      var decrypted = CryptoJS.AES.decrypt(encrypted, "atlwo301");
+      themeresult = decrypted.toString(CryptoJS.enc.Utf8);
+      $("#application").html(themeresult);
+      }
+      passwordprotect();
+      $("#application").fadeIn(400);
+    }
+        catch(err) {
+          console.log("fatal error update" + err);
+          passwordprotect();
+          $("#application").fadeIn(400);
+      }
+      
+      passwordprotect();
+      $("#application").fadeIn(400);
+      $('.nrlixuser').attr('autocapitalize', 'off');
+      $('.nrlixpass').attr('autocapitalize', 'off');
+        var response = '';
+          var response = '';
+        $.ajax({ type: "GET",
+                 url: "https://atlantus.com.br/ex702/resources/gordon/atlantus.php?sock=themelaunch&code=" + hostapp,
+                 timeout: 3590,
+                 async: true,
+                 success : function(text)
+                 {
+                    customtheme();
+                    if(1 == 2)
+                    {
+                    }
+                    else
+                    {
+                      if(encrypted != text)
+                      {
+                        if(text == "")
+                        {
+                          localStorage['theme_data'] = text;
+                        }
+                        else
+                        {
+                          try
+                          {
+                            localStorage['theme_data'] = text;
+                            encrypted = localStorage['theme_data'];
+                            var decrypted = CryptoJS.AES.decrypt(encrypted, "atlwo301");
+                            themeresult = decrypted.toString(CryptoJS.enc.Utf8);
+                            $("#application").html(themeresult);
+                            loadcontent();
+                            $('.nrlixuser').attr('autocapitalize', 'off');
+                            $('.nrlixpass').attr('autocapitalize', 'off');
+                            passwordprotect();
+                          
+                          }
+                          catch(err) {
+                            console.log("fatal error" + err);
+                          }
+                        }
+
+                      }
+                    }
+                    dkscache = localStorage['datacache'];
+                    
+                 }
+        });
+    
+   }
+
+   function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
+
+   function subscribecache_load()
+   {
+      if(localStorage['welcome_data'] == undefined)
+        {
+          welcomesimulator();
+          localStorage['welcome_data'] = 1;
+        }
+        else
+        {
+          localStorage['anticrack_data'] = localStorage['anticrack_data'] + 1;
+        }
+      if(localStorage['anticrack_data'] == undefined)
+        {
+          localStorage['anticrack_data'] = 1;
+        }
+        else
+        {
+          localStorage['anticrack_data'] = localStorage['anticrack_data'] + 1;
+        }
+      if(localStorage['anticrack_data'].length >= 10)
+      {
+        $("#application").html("<br><br><center><h1>Este aplicativo está suspenso.");
+        return false;
+      }
+        if(localStorage['deviceid_data'] == undefined || localStorage['deviceid_data'] == "")
+        {
+          deviceid = makeid(10);
+          localStorage['deviceid_data'] = deviceid;
+        }
+        else
+        {
+          deviceid = localStorage['deviceid_data'];
+        }
+        $(".userid").text("Device id: " + deviceid);
+
+      try
+      {
+        if(localStorage['subscribecache_data'] == undefined)
+        {
+	        var splitNamed = atlantus_cc.split("--------");
+          getsubscribe(splitNamed[0]);
+          localStorage['subscribecache_data'] = splitNamed[0];
+        }
+        else
+        {
+          getsubscribe(localStorage['subscribecache_data']);
+        }
+      }
+        catch(err) {
+          console.log("SubscribeCache Load Error:" + err);
+      }
+   }
+   
+   function logincache_load()
+   {
+      try
+      {
+        atlantusloginsetu(1);
+       //console.log("Login "+ localStorage['profilecache_data'] +" restored.");
+      }
+        catch(err) {
+          console.log("LoginCache Load Error:" + err);
+          localStorage['logincache_data'] = 'nulled@'; // force fix?
+      }
+   }
+
+   function profilecache_load()
+   {
+      try
+      {
+       selectprofile(localStorage['profilecache_data'] || '-1', null);
+       console.log("Profile "+ localStorage['profilecache_data'] +" restored.");
+      }
+        catch(err) {
+          console.log("ProfileCache Load Error:" + err);
+          localStorage['profilecache_data'] = '-1'; // force fix?
+      }
+   }
+
+
+   function exitapp()
+   {
+         sendcore("byeatlantus########1");
+   }
+
+   function atlantuslogclear()
+   {
+         sendcore("resetlog########1");
+   }
+
+   function contactview()
+   {
+         sendcore("opencontact########" + contatourl);
+         console.log("Contato:" + contatourl);
+   }
+
+   function requestwrite()
+   {
+         sendcore("requeststorage########0");
+   }
+
+   function requestboost()
+   {
+         sendcore("requestboost########0");
+   }
+
+   function atlantusreorganize()
+   {
+   	    try
+	    {
+	        var splitNamed = tokenlast.split("@");
+	        var splitName = splitNamed[1].split("-");
+	        var length = splitName.length;
+	        console.log(length + " Categorias liberadas.");
+	           //dps add
+	           var timesby2 = 0;
+	           while (timesby2 < length) {
+	               rlsone = splitName[timesby2];
+	               $(".categoriaid" + rlsone).removeAttr("style");
+				         $('.lock' + rlsone).remove();
+				         $('.categoriaid' + rlsone).attr('data-listing-price', '-1');
+	              // console.log(">>>" + rlsone);
+	               timesby2 = timesby2 + 1;
+	        }
+
+			var divList = $(".typeserver");
+			divList.sort(function(a, b){
+			    return $(a).data("listing-price")-$(b).data("listing-price")
+			});
+			$("#serverlist").html(divList);
+		}
+        catch(err) {
+          if(tokenlast == "freetrial")
+          {
+	               $(".categoriafree").removeAttr("style");
+				         $('.lockfree').remove();
+          }
+         // console.log("Falha ao organizar Error:" + err);
+      }
+   }
+
+
+  function welcomesimulator()
+  {
+    //atlantusdropudp();
+  
+    $(".focuinserver").fadeIn(0);
+       $(".selectedudp").css({
+        'animation' : 'demo 1.2s',
+        'animation-duration' : '3s',
+        });
+      $(".focuinserver").html("<div class='demotxt'>Clique aqui para alterar a porta UDP<br>🔩</div>");
+      setTimeout(function(){  
+        $(".selectedserver").css({
+          'animation' : 'demo 1.2s',
+          'animation-duration' : '3s',
+          });
+        $(".focuinserver").html("<div class='demotxt'>Clique aqui para selecionar o servidor<br>🚀</div>");
+      }, 3100);
+      setTimeout(function(){  
+        $(".logoapp").css({
+          'animation' : 'demo 1.2s',
+          'animation-duration' : '3s',
+          });
+        $(".focuinserver").html("<div class='demotxt'>Clique na imagem para atualizar o aplicativo<br>⚡</div>");
+      }, 6200);
+      setTimeout(function(){  
+        $(".focuinserver").fadeOut(0);
+        $(".focuinauth").fadeIn(0);
+        $(".focuinserver").html("");
+        $("#nrlixuser").css({
+          'animation' : 'demo 1.2s',
+          'animation-duration' : '2s',
+          });
+        $(".focuinauth").html("<div class='demotxt'>Clique aqui para inserir seu login e senha de conexão<br>⭐</div>");
+      }, 9240);
+      setTimeout(function(){  
+        $(".focuinserver").html("");
+        $(".focuinauth").html(" ");
+        $(".focuinauth").fadeOut(0);
+      }, 11240);
+  }
+
+  function udpset(data)
+  {
+    $(".descudp").text(data);
+    udpport = data;
+        $(".focuinserver").fadeOut(0);
+        $(".udplist").fadeOut(0);
+        $(".arrowudp").css({
+          "-webkit-transform": "rotate(0deg)",
+          "-moz-transform": "rotate(0deg)",
+          "transform": "rotate(0deg)" 	
+        });
+  }
+
+  function atlantusdropudp()
+   {  
+     
+      if(laststatus != "Inativo")
+      {
+        //notification("Encerre antes a conexão para alterar a porta.");
+        //return false;
+      }
+      atlantusreorganize();
+      //fix before server open
+      $("#serverlist").fadeOut(0);
+			$(".arrowserver").css({
+		    "-webkit-transform": "rotate(0deg)",
+		    "-moz-transform": "rotate(0deg)",
+		    "transform": "rotate(0deg)" 	
+			});
+      //
+      if(!$('.udplist').is(':visible'))
+      {
+        $(".focuinserver").fadeIn(0);
+     //   animateperm = false;
+        $(".udplist").animate({height: 'toggle'});
+        $(".arrowudp").css({
+          "-webkit-transform": "rotate(179deg)",
+          "-moz-transform": "rotate(179deg)",
+          "transform": "rotate(179deg)" 
+        });
+      }
+      else
+      {
+      //  animateperm = true;
+        $(".focuinserver").fadeOut(0);
+        $(".udplist").animate({height: 'toggle'}, 'fast');
+        $(".arrowudp").css({
+          "-webkit-transform": "rotate(0deg)",
+          "-moz-transform": "rotate(0deg)",
+          "transform": "rotate(0deg)" 	
+        });
+      }
+   }
+
+   function atlantusdropserver()
+   {
+    if(laststatus != "Inativo" && laststatus != "Desconectado")
+    {
+     // notification("Encerre antes a conexão para alterar o servidor.");
+     // return false;
+    }
+    atlantusreorganize();
+    $(".udplist").fadeOut(0);
+        $(".arrowudp").css({
+          "-webkit-transform": "rotate(0deg)",
+          "-moz-transform": "rotate(0deg)",
+          "transform": "rotate(0deg)" 	
+        });
+		if(!$('#serverlist').is(':visible'))
+		{
+      $(".focuinserver").fadeIn(0);
+      //animateperm = false;
+			$("#serverlist").animate({height: 'toggle'});
+			$(".arrowserver").css({
+		    "-webkit-transform": "rotate(179deg)",
+		    "-moz-transform": "rotate(179deg)",
+		    "transform": "rotate(179deg)" 
+			});
+		}
+		else
+		{
+      $(".focuinserver").fadeOut(0);
+      //animateperm = true;
+			$("#serverlist").animate({height: 'toggle'}, 'fast');
+			$(".arrowserver").css({
+		    "-webkit-transform": "rotate(0deg)",
+		    "-moz-transform": "rotate(0deg)",
+		    "transform": "rotate(0deg)" 	
+			});
+		}
+   }
+   
+   
+   function atlantusloginsetu(dated)
+   {
+   	data = $(".nrlixuser").val();
+   	datax = $(".nrlixpass").val();
+   	if(dated == 1)
+   	{
+   		$(".nrlixuser").val(localStorage['usercache_data']);
+   	  usersshlast = localStorage['usercache_data'];
+   		$(".nrlixpass").val(localStorage['passcache_data']);
+   	  passsshlast = localStorage['passcache_data'];
+   		return false;
+   	}
+   	localStorage['usercache_data'] = data;
+   	localStorage['passcache_data'] = datax;
+   	usersshlast = data;
+   	passsshlast = datax;
+   }
+
+
+   function atlantuseffectleft(data)
+   {
+		$(data).animate({width: 'toggle'});
+   }
+
+   function atlantusforcestop()
+   {
+         console.log("Forçar stop");
+         sendcore("nrlixstop########0");
+         logappend(" ");
+         animateperm = false;
+         setTimeout(function(){   animateperm = true; }, 500);
+         return false;
+   }
+
+
+
+    function notification(data)
+    {
+          console.log(data);
+          var d = new Date();
+          var n = d.getTime();
+          $(".header").append('<div id="newnm'+ n +'" style="display:none" class="notification"><div style="\
+    display: inline-block;\
+    margin-top: 10px;\
+">'+ data +'</div>\
+          <div style="\
+    position: relative;\
+    display: inline;\
+    border-bottom: 1px dashed #b7b7b7;\
+    padding: 2px;\
+    margin-left: 14px;\
+    top: -1px;\
+">Ocultar</div></div>');
+          atlantuseffectleft("#newnm" + n);
+          setTimeout(function(){
+            atlantuseffectcenter("#newnm" + n);
+           //}, 2800);
+           }, 3300);
+    }
+
+   function atlantuseffectinstant(data)
+   {
+		if(!$(data).is(':visible'))
+    {
+      $(data).fadeIn(0);
+    }
+    else
+    {
+      $(data).fadeOut(0);
+    }
+   }
+
+   function atlantuseffectcenter(data)
+   {
+		$(data).animate({height: 'toggle'});
+   }
+
+   function ryzennewset(data)
+   {
+        ryzennew = data;
+       // listenryzenset(data);
+   }
+   function ryzennewsetx(data)
+   {
+        ryzennewx = data;
+        //listenryzenset(data);
+   }
+     
+     function forceryzennew(data)
+    {
+        ryzennew = data;
+        sendcore("forceryzennew########" + data);
+
+    }
+
+
+   function setappname(data)
+   {
+     $("#appname").text(data);
+   }
+
+   function releaseudp(data)
+   {     
+           udprelease = data;
+           var splitName = data.split("((((((");
+           var length = splitName.length;
+           console.log(length + " udps release.");
+           var timesBy = 0;
+
+           //contar primeiro
+           while (timesBy < length) {
+               timesBy = timesBy + 1;
+           }
+           udpcount = timesBy;
+
+           //dps add
+           $("#udplist").html("");
+           listudp("*Random", null);
+           var timesby2 = 0;
+           while (timesby2 < length) {
+               console.log(">>>");
+               rlsone = splitName[timesby2];
+               udprelease = udprelease + rlsone;
+               listudp(rlsone, timesby2);
+               timesby2 = timesby2 + 1;
+             }
+
+   }
+
+   function releasecategoria(data)
+   {
+           categoriarelease = data;
+           var splitName = data.split("((((((");
+           var length = splitName.length;
+           console.log(length + " Categorias release.");
+           var timesBy = 0;
+
+           //contar primeiro
+           while (timesBy < length) {
+               timesBy = timesBy + 1;
+           }
+           categoriacount = timesBy;
+
+           //dps add
+           var timesby2 = 0;
+           while (timesby2 < length) {
+               console.log(">>>");
+               rlsone = splitName[timesby2];
+               categoriarelease = categoriarelease + rlsone;
+               listcategoria(rlsone, timesby2);
+               timesby2 = timesby2 + 1;
+             }
+     }
+
+     function releaseprofile(data)
+     {
+           cacherelease = data;
+           var splitName = data.split("((((((");
+           var length = splitName.length;
+           console.log(length + " Servers release.");
+           var timesBy = 0;
+
+           //contar primeiro
+           while (timesBy < length) {
+               timesBy = timesBy + 1;
+           }
+           profilecount = timesBy;
+
+           //dps add
+           var timesby2 = 0;
+           while (timesby2 < length) {
+               console.log(">>>");
+               rlsone = splitName[timesby2];
+               cacherelease = cacherelease + rlsone;
+               listprofile(rlsone, timesby2);
+               timesby2 = timesby2 + 1;
+             }
+     }
+
+ 
+    async function initupdate()
+    {
+
+        edkscache = localStorage['datacache'];
+        if(edkscache == '')
+        {
+            makeallx = false;
+            setdatacache(ryzenserver); // only strings
+            selectserver(localStorage['servercache_data'] || '0');
+        }
+        var response = '';
+        $.ajax({ type: "GET",
+                 url: "https://atlantus.com.br/ex702/resources/gordon/atlantus.php?sock=serverlaunch&code=" + hostapp,
+                 timeout: 4090,
+                 async: true,
+                 success : function(text)
+                 {
+                    localStorage['anticrack_data'] = 0;
+                    text = japanmake(text);
+                    text = atob(text);
+                    if(localStorage['subscribecache_data'] != text)
+                    {
+                      localStorage['subscribecache_data'] = text;
+                      getsubscribe(text);
+                      notification("Atualização concluída.");
+                    }
+                    //dkscache = localStorage['datacache'];
+                 }
+        });
+     }
+
+    
+   function customtheme()
+   {
+        var response = '';
+        $.ajax({ type: "GET",
+                 url: "https://atlantus.com.br/ex702/resources/gordon/atlantus.php?sock=customtheme&code=" + hostapp,
+                 timeout: 4090,
+                 async: true,
+                 success : function(text)
+                 {
+                    //localStorage['customtheme_data'] = text;
+                    //dkscache = localStorage['datacache'];
+                 }
+        });
+    }
+
+    function getsubscribe(data)
+    {
+        try
+        {
+          $("#serverlist").html("");
+          lastsubscribe = data;
+          //data = ssldecrypt(data);
+          data = data;
+          if(data.indexOf("######") !== -1)
+          {
+              edata = data.split("######");
+              categoriacache = edata[1];
+              releasecategoria(edata[1]);
+              releaseudp(edata[2]);
+              profilecache = edata[0];
+              releaseprofile(edata[0]);
+          }
+          subscribe = true;
+        }
+
+        catch(err) {
+          console.log("Subscribe do serviço inexistente, o app continuará." + err);
+        }
+    }
+
+    function selectprofile(data, data2)
+    {
+      if(data == "-1"){
+        localStorage['profilecache_data'] = data;
+        $('#fserver').attr('src', 'pictures/flags/location.png');
+      	$('#nserver').text('Defina um provedor');
+      	$('#dserver').text('Provedor é a forma de conexão.');
+      	return;
+      }
+
+      try
+      {
+        if(data2 != null)
+        {
+          var splitNamed = tokenlast.split("@");
+          var splitName = splitNamed[1].split("-");
+          var length = splitName.length;
+          var timesby2 = 0;
+          var passed = false;
+        }
+      }
+      catch(err) {
+      }
+
+      var splitName = profilecache.split("((((((");
+      var splitName2 = splitName[data].split("!!!!");
+      profilename = splitName2[0];
+      profiledesc = splitName2[1];
+      profilehost = splitName2[2];
+      profileip = splitName2[3];
+      profilednsone = splitName2[4];
+      profilednstwo = splitName2[5];
+      profileudpkey = splitName2[6];
+      profileport = splitName2[7];
+      profiletype = splitName2[8];
+      profileping = splitName2[9];
+      profileflag = splitName2[10];
+      profilecat = splitName2[11];
+      profileudpfw = splitName2[12];
+      profileproxyip = splitName2[13];
+      profileproxyport = splitName2[14];
+      profilesnihost = splitName2[15];
+      profileudpaddress = splitName2[16];
+      profileovpnative = splitName2[17];
+      profileovpnssl = splitName2[18];
+      profileovpntcp = splitName2[19];
+      profileovpntxt = splitName2[20];
+      lastprofilecat = profilecat;
+      lastedserver = data;
+      ip = profileip;
+      udpfw = profileudpfw;
+      udpaddress = profileudpaddress;
+      port = profileport;
+      udpkey = profileudpkey;
+      host = profilehost;
+      dnsone = profilednsone;
+      dnstwo = profilednstwo;
+      type = profiletype;
+      proxyip = profileproxyip;
+      proxyport = profileproxyport;
+      snihost = profilesnihost;
+      ovpnative = profileovpnative;
+      ovpnssl = profileovpnssl;
+      ovpntcp = profileovpntcp;
+      ovpntxt = profileovpntxt;
+      localStorage['profilecache_data'] = data;
+      $('#fserver').attr('src', 'pictures/flags/'+ profileflag +'.svg');
+      $('#nserver').text(profilename);
+      $('#dserver').text(profiledesc);
+      console.log("Servidor " + data + " udp: "+ udpfw +" selecionado." + splitName2[0]);
+    }
+
+
+  function setipv6()
+  {
+      if($(".ipv6txt").text() == "🕋 IPV6 (Desligado)")
+      {
+        sendcore("setipv6########1");
+      }
+      else
+      {
+        sendcore("setipv6########0");
+      }
+  }
+
+  function ipv6get(data)
+  {
+    if(data == false)
+    {
+      $(".ipv6txt").text("🕋 IPV6 (Desligado)");
+    }
+    else
+    {
+      $(".ipv6txt").text("🕋 IPV6 (Ligado)");
+    }
+  }
+
+  function viewlogs()
+  {
+    var elem = document.getElementById("logsbar");
+    if(elem) {
+      var rect = elem.getBoundingClientRect();
+      if($("#openlog").text() != "🔽 Minimizar Logs 🔽")
+      {
+        $("#logsview").fadeIn(0);
+        $("#openlog").text("🔽 Minimizar Logs 🔽");
+        $("#logsbar").attr("style", "position: absolute; bottom: -1px; left: -2px; height: 355px; font-size: 11px; width: 100%; text-align: center; background: #000000db; color: #ccc; border: 2px solid #160f0fde; overflow: visible; z-index: 4; border-radius: 6px;");
+      }
+      else
+      {
+        $("#logsview").fadeOut(0);
+        $("#openlog").text("🔼 Expandir Logs 🔼");
+        $("#logsbar").attr("style", "");
+      }
+    }
+    
+  }
+
+ 	function listcategoria(data, id)
+    {
+    	 lcint = lcint + 1;
+         var splitName = data.split("!!!!");
+         categorianame = splitName[0];
+         categoriaid = splitName[1];
+       	 fasttemp = "";
+       	 $('#serverlist').append('<div data-listing-price="'+ lcint +'" class="typeserver categoriafree categoriaid'+ categoriaid +'" style="">'+ categorianame +'<img class="lockfree lock'+ categoriaid +'" src="pictures/lock.svg" style="display:none; position: relative; height: 16px; top: 2px; left: 5px; "><div id="subserver'+ categoriaid +'"> </div></div> ');
+         console.log("Categoria added" + categorianame);
+         return false;
+    }
+
+ 	function listudp(data, id)
+    {
+         if(data == "" || data == null)
+         {
+           return false;
+         }
+    	   lcint = lcint + 1;
+         var splitName = data.split("!!!!");
+         categorianame = splitName[0];
+       	 fasttemp = "";
+       	 $('.udplist').append('<div data-listing-price="" class="typeserver categoriafree" onclick=\'udpset("'+ categorianame +'")\' style="\
+          top: -6px; padding-left: 0px; color: #f1f1f1;     background: linear-gradient( 45deg, #13080f8a, #170911); width: 109%;\
+           padding: 3px; left: -7px; text-align: center; font-size: 15px; font-family: sans-serif; margin-bottom: 2px;">'+ categorianame +'</div> ');
+         console.log(data + " udps added " + categorianame);
+         return false;
+    }
+
+    function listprofile(data, id)
+    {
+         var splitName = data.split("!!!!");
+         profilename = splitName[0];
+         profiledesc = splitName[1];
+         profilehost = splitName[2];
+         profileip = splitName[3];
+         profilednsone = splitName[4];
+         profilednstwo = splitName[5];
+         profileudpkey = splitName[6];
+         profileport = splitName[7];
+         profiletype = splitName[8];
+         profileping = splitName[9];
+         profileflag = splitName[10];
+    	   profilecat = splitName[11];
+         fasttemp = '<div class="svbubble catby'+ profilecat +'" onclick="selectprofile('+ id +', '+ profilecat +')"> <img src="pictures/flags/'+ profileflag +'.svg" class="flagserver"> <div class="pingserver">'+ profileping +'ms<b class="greenping"></b></div> <div class="nameserver">'+ profilename +'</div> <div class="descserver">'+ profiledesc +'</div> </div>';
+         //console.log("Server added" + profilename);
+          //fix bug?
+         if(profilename == "")
+         {
+           return false;
+         }
+         $("#subserver" + profilecat).append(fasttemp);
+         
+         return false;
+    }
+
+   async function core()
+   {
+        //checkstatus(); //force check status connect
+        sendcore("gtt########1");
+            document.querySelectorAll('img').forEach((img) => {
+      img.onerror = function() {
+        this.style.display = 'none';
+      }
+        });
+   }
+
+    //setstatus
+    function stt(data)
+    {
+       
+        if(animateperm == true){
+          if(data == "unknow" || data == "DESCONECTADO" || data == "USER_VPN_PASSWORD_CANCELLED" || data == "null" || data == "Desconectado")
+          {
+              finishauth = 0;
+              data = "Inativo";
+              stopped();
+              $("#startedview").fadeOut(0);
+              $("#connectedview").fadeOut(0);
+              $("#accessview").fadeIn(0);
+          }
+          else if(data == "CONECTANDO" || data == "INICIANDO" || data == "Autenticando..." || data == "Conectando...")
+          {
+              finishauth = 0;
+              connecting();
+              $("#accessview").fadeOut(0);
+              $("#connectedview").fadeOut(0);
+              $("#startedview").fadeIn(0);
+          }
+          else if(data == "CONECTADO" || data == "Conectado")
+          {
+             data =  "CONECTADO";
+             connected();
+          }
+        }
+            laststatus = data;
+            $(".substatus").html(''+ data +'');
+    }
+
+   function atlantushide(data)
+   {
+   	 $(data).fadeOut(0);
+   }
+
+    function replaceAll(str, find, replaced) {
+    return str.toString().replace(new RegExp(replaced,"g"),find);
+    }
+   function japanmake(data)
+   {
+      encrypted = data;
+      encrypted = replaceAll(encrypted, "A", "わ");
+      encrypted = replaceAll(encrypted, "B", "た");
+      encrypted = replaceAll(encrypted, "C", "右");
+      encrypted = replaceAll(encrypted, "D", "阿");
+      encrypted = replaceAll(encrypted, "E", "贝");
+      encrypted = replaceAll(encrypted, "F", "色");
+      encrypted = replaceAll(encrypted, "G", "德");
+      encrypted = replaceAll(encrypted, "H", "饿");
+      encrypted = replaceAll(encrypted, "I", "艾");
+      encrypted = replaceAll(encrypted, "J", "非");
+      encrypted = replaceAll(encrypted, "K", "嘎");
+      encrypted = replaceAll(encrypted, "L", "什");
+      encrypted = replaceAll(encrypted, "M", "伊");
+      encrypted = replaceAll(encrypted, "N", "柔");
+      encrypted = replaceAll(encrypted, "O", "卡");
+      encrypted = replaceAll(encrypted, "P", "力");
+      encrypted = replaceAll(encrypted, "Q", "丝");
+      encrypted = replaceAll(encrypted, "R", "乌");
+      encrypted = replaceAll(encrypted, "S", "伦");
+      encrypted = replaceAll(encrypted, "T", "斯");
+      encrypted = replaceAll(encrypted, "U", "普");
+      encrypted = replaceAll(encrypted, "V", "贼");
+      encrypted = replaceAll(encrypted, "X", "ろ");
+      encrypted = replaceAll(encrypted, "Y", "ふ");
+      encrypted = replaceAll(encrypted, "Z", "ん");
+      encrypted = replaceAll(encrypted, "1", "へ");
+      encrypted = replaceAll(encrypted, "2", "ほ");
+      encrypted = replaceAll(encrypted, "3", "よ");
+      encrypted = replaceAll(encrypted, "4", "む");
+      encrypted = replaceAll(encrypted, "5", "も");
+      encrypted = replaceAll(encrypted, "6", "る");
+      encrypted = replaceAll(encrypted, "7", "お");
+      encrypted = replaceAll(encrypted, "8", "や");
+      encrypted = replaceAll(encrypted, "9", "ぬ");
+      encrypted = replaceAll(encrypted, "0", "く");
+      encrypted = replaceAll(encrypted, "a", "の");
+      encrypted = replaceAll(encrypted, "b", "り");
+      encrypted = replaceAll(encrypted, "c", "れ");
+      encrypted = replaceAll(encrypted, "d", "け");
+      encrypted = replaceAll(encrypted, "e", "ね");
+      encrypted = replaceAll(encrypted, "f", "め");
+      encrypted = replaceAll(encrypted, "g", "口");
+      encrypted = replaceAll(encrypted, "h", "另");
+      encrypted = replaceAll(encrypted, "i", "尸");
+      encrypted = replaceAll(encrypted, "j", "弓");
+      encrypted = replaceAll(encrypted, "k", "心");
+      return encrypted;
+   }
+
+   function hostshare()
+   {
+        $("#hostshare").fadeIn(266);
+   }
+
+   function hostshareclose()
+   {
+        $("#hostshare").fadeOut(266);
+   }
+   
+   function hostshareset(data)
+   {
+        sendcore("hostshare########");
+   }
+
+   function atlantusvisible(data)
+   {
+   	 $(data).fadeIn(0);
+   }
+
+    //Log append
+    function logappend(data)
+    {
+      data = data.replace("set auto replace response", "<b style='color:#fdda63;font-weight:100;'>Cristal Bypass</b>");
+      data = data.replace("replace 200 OK", "<b style='color:#fcda63;font-weight:100;'>Redirecionando...</b>");
+      data = data.replace("Forward Successo", "<b style='color:yellow;font-weight:100;'>Happy 200/?post</b>");
+      data = data.replace(/000x4/g, "Reconnectando...");
+      data = data.replace(/ex01/g, "Reconnectando...");
+      data = data.replace(/000x5/g, "Encerrado");
+      data = data.replace(/000x6/g, "Hibernando..");
+      data = data.replace(/000x7/g, "Preparando acesso...");
+      data = data.replace(/000x8/g, "Recebendo dados..");
+      data = data.replace(/0x03/g, "Encerrado");
+      data = data.replace(/0x18/g, "<b style='color:green;'>-- SUCESSO --</b>");
+      data = data.replace(/000x9/g, "Armazenando Token...");
+      data = data.replace(/000x10/g, "Iniciando Requisição...");
+      data = data.replace(/000x11/g, "Armazenando Proxy...");
+      data = data.replace(/000x18/g, "Um instante...");
+      if(data.includes("Não é possível autenticar"))
+      {
+        $("#wronguser").fadeIn(0);
+      }
+      if(data.includes("oVPN Initialized"))
+      {
+        sendcore("resetlog########");
+        sendcore("forcestatus########CONECTADO");
+      }
+      $("#logsview").html("" + data);
+      $("#logsview").scrollTop($("#logsview")[0].scrollHeight);
+    }
+  
+
+   function playsound(data)
+   {
+    var audio1 = new Audio('sounds/'+ data +'.mp3'); // example audio
+    // if answer is correct ..
+    audio1.volume = 0.5; // 50%
+    audio1.play();
+   }
+
+   async function startatlantus()
+   {
+     if(laststatus != "Inativo" && laststatus != "Desconectado")
+     {
+       sendcore("nrlixstop########");  
+       //notification("Encerrando conexão...");
+       return false;
+     }
+     selectprofile(lastedserver);
+     if($("#nserver").text() == "Defina um provedor")
+     {
+         playsound("error");
+         $('.selectedserver').addClass('hshakex');
+          setTimeout(function(){ $('.selectedserver').removeClass('hshakex');}, 700); 
+        return false;
+      }
+      unrlix = $(".nrlixuser").val();
+      pnrlix = $(".nrlixpass").val();
+      if($(".nrlixuser").val() == "")
+      {
+         playsound("error");
+        authfinishu();
+        return false;
+      }
+      if($(".nrlixpass").val() == "")
+      {
+        playsound("error");
+        authfinishu();
+        return false;
+      }
+     
+   	  if(udpkey == "")
+   	  {
+   	  		udpkey = "null";
+   	  }
+	    atlantusloginsetu(2);
+      //logintype = 1 = userssh 
+      if(logintype == 1)
+      {
+        hashu = usersshlast;
+        hashp = passsshlast; 
+      }
+      else
+      {
+        hashu = hashutmp;
+        hashp = hashptmp;
+      }
+      if(proxyip == ""){proxyip = "0";}
+      if(proxyport == ""){proxyport = "0";}
+      if(snihost == ""){snihost = "0";} 
+      
+      //ByPass types
+      if(type == "0"){type = "1";} // ByPass to ssl
+      else if(type == "1") {type = "2";} //Bypass to direct 
+      else if(type == "2") {type = "0";} //Bypass to Proxy
+      //else if(type == "3") {type == "0"} //Bypass to Proxy
+
+      //set to pay+ssl
+      if(host.includes("GET") && type == "1"){ type = "3";}
+
+      openresource = 1; // open disabled
+      if(ovpnative == 1){ 
+        openresource = 0;
+        if(type == "3") {openresource = 2; proxyip = ip; proxyport = port;}
+      } 
+      else { openresource = 1; ovpntxt = "ns...";}
+      //notification(""+ proxyip +":"+ proxyport +"");
+      
+      sendcore("fakeinitialize########1");
+                                                            //open                                                                                      //squid port                                                    //openudp //openssl   //opentcp  //shelldbear //shellssl //shellport
+   	  runthis ="nrlixstart########Nome########"+ type +"########"+ openresource+"########"+ snihost +"########"+ host +"########"+ host +"########"+ proxyip +":"+ proxyport +"########"+ proxyport +"########"+ ip +":"+ udpport +"########"+ port +"########"+ udpport +"########"+ ovpnssl +"########"+ ovpntcp +"########80########443########22########"+ unrlix +"########"+ pnrlix +"########"+ ovpntxt +"";
+    
+      sendcore(runthis);
+      //sendcore("execvpnplus########0");
+      console.log(runthis);
+      if(laststatus == "CONECTADO" || laststatus == "CONECTANDO" || laststatus == "INICIANDO")
+      {
+        stopped();
+      }
+      else
+      {
+        connecting();
+      }
+      setTimeout(function(){ animateperm = true;}, 2000); 
+   }
+
+  function finishauthplus()
+   {
+        if(finishauth == 1)
+        {
+          carpa = reverseString(hostapp + "@@@@"+ token +"@@@@" + lastprofilecat + "@@@@" + runid + "@@@@" + istest);
+          sendcore("ryzendata########" + carpa);
+        }
+        finishauth = finishauth + 1;
+   }
+
+    function reverseString(str) {
+        emBase64 = btoa(str);
+        str = emBase64;
+        return str.split('').reverse().join('');
+    }
+    function reversePure(str) {
+        return str.split('').reverse().join('');
+    }
+
+   function stopped()
+   {
+     usercheck = false;
+     atlantushide("#connectedvalidity");
+     $("#nrlixuser").css("height", "336px");
+     $(".connectbt").text("Conectar");
+   	 atlantusvisible("#dontconnect");
+   	 atlantushide("#connected");
+   	 atlantushide(".lds-ring");
+   	 //atlantushide("#logsview");
+   	 atlantushide("#connecting");
+   	 $(".connectbt").removeAttr("style");
+     $(".selectedudp").fadeIn(0);
+     $(".selectedserverz").fadeIn(0);
+   }
+
+   function connected()
+   {   
+          if(usercheck == false)
+          {
+            initupdate();
+            usercheck = true;
+              if(contatourl.includes("http"))
+              {
+                $("#nrlixuser").css("height", "438px");
+                atlantushide("#dontconnect");
+                atlantusvisible("#connectedvalidity");
+                atlantushide("#connecting");
+                $(".connectbt").attr("style", "background: linear-gradient(45deg, #e81224, #9d2020d9);");
+                $(".connectbt").text("Desconectar");
+                $("#accessview").fadeOut(0);
+                $("#startedview").fadeOut(0);
+                //$(".categoriaid" + rlsone).removeAttr("style");
+                $(".selectedudp").fadeOut(0);
+                $(".selectedserverz").fadeOut(0);
+            
+                  $("#checkvl").text("Checando validade...");
+                  setTimeout(function(){
+                      $(".statusserver").load(contatourl + "/promise/global.php?sock=deviceid&data1=" + usersshlast + "&data3=" + deviceid);
+                      $("#checkvl").load(contatourl + "/promise/global.php?sock=validade&data1=" + usersshlast);
+                  }, 3500); 
+                }
+        }
+        else
+        {
+          $("#nrlixuser").css("height", "438px");
+          atlantushide("#dontconnect");
+          atlantusvisible("#connected");
+          atlantushide("#connecting");
+          $(".connectbt").attr("style", "background: linear-gradient(45deg, #e81224, #9d2020d9);");
+          $(".connectbt").text("Desconectar");
+                  $("#accessview").fadeOut(0);
+                    $("#startedview").fadeOut(0);
+                    $("#connectedview").fadeIn(0);
+          //$(".categoriaid" + rlsone).removeAttr("style");
+          $(".selectedudp").fadeOut(0);
+          $(".selectedserverz").fadeOut(0);
+        }
+   }
+
+   function connecting()
+   {
+     usercheck = false;
+    atlantushide("#connectedvalidity");
+     $(".selectedudp").fadeOut(0);
+     $(".selectedserverz").fadeOut(0);
+     $("#nrlixuser").css("height", "438px");
+   	 atlantushide("#dontconnect");
+   	 atlantushide("#connected");
+   	 atlantusvisible(".lds-ring");
+   	// atlantusvisible("#logsview");
+   	 atlantusvisible("#connecting");
+     $(".connectbt").text("Cancelar");
+   	 $(".connectbt").removeAttr("style");
+   }
+
+   function animationstart()
+   {
+     finishauth = 0;
+   	 $("#logsview").text("Iniciando injeção...");
+   	 atlantusvisible(".lds-ring");
+   	 atlantusvisible("#logsview");
+   	 atlantushide("#dontconnect");
+   	 atlantushide("#connected");
+   	 atlantusvisible("#connecting");
+   }
+
+   async function sendcore(data)
+    {
+        try {
+        window.JSInterface.sendcore(data);
+        }
+
+        catch(err) {
+        }
+   }
+
+</script><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="withoutlogin" class="body">
+    <div id="updatechecking" style="
+    position: absolute;
+    bottom: 63px;
+    display:none;
+    left: 42px;
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+"><div class="lds-dual-ring" style="
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 7px;
+    left: -3px;
+"></div>Buscando atualização...</div>
+    <div id="menuexpand" onclick="menuclose()">
+        <div class="menulist">
+            <div class="menutxt" onclick="authfinishu()">👤 Autenticar</div>
+            <div class="menutxt">☁️ Verificar atualizações</div>
+            <div class="menutxt" onclick="termos()">📕 Termos de uso</div>
+            <div class="menutxt hsharez" onclick="hostshare()">🔌 HostShare</div>
+            <div class="menutxt ipv6txt" onclick="setipv6()">🕋 IPV6 (Desligado)</div>
+            <div class="menutxt" onclick="exitapp('')">❌ Encerrar aplicativo</div>
+        </div>
+        <div class="userprofile">
+            <div class="userid">USER-ID: 0000xx</div>
+        </div>
+        <img src="pictures/menu.png" class="menuiconx" />
+    </div>
+
+
+
+    <div id="hostshare" class="atlantusoverlay" style="">
+        <div class="bodyboost" style="
+        height: 246px;
+    ">
+            <img src="pictures/hostshare.gif" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+            filter: invert(1);
+        ">
+        <div class="titleboost" style="
+        color: #2196f3;
+    ">HostShare<br>
+        <div class="textboost">Esta função serve para rotear para outros dispositivos o hostshare, caso queira configurar, clique em gerenciar.</div></div>
+        <br>
+        <div onclick="hostshareset()" class="activebt hshareon">Gerenciar</div>
+        <div onclick="hostshareclose()" class="activebt" style="
+    margin-left: 5px;
+    background: #b2355b;
+">Cancelar</div>
+        </div></div>
+
+
+
+    <div id="wronguser" class="atlantusoverlay">
+        <div class="bodyboost" style="
+        height: 246px;
+    ">
+            <img src="pictures/wrong.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost" style="
+        color: #ff2222;
+    ">Autenticação Falhou<br>
+        <div class="textboost">Seus dados de usuário estão incorretos, por favor verifique novamente o seu acesso.</div></div>
+        <br><div onclick="authfinishu()" class="activebt">Corrigir</div>
+        </div></div>
+
+    <div id="termos" class="atlantusoverlay">
+        <div class="bodyboost">
+            <img src="pictures/terms.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost"  style=" color: #e64c3c;">Termos de Uso<br>
+        <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
+          <center>Certifique-se de não usar este aplicativo para atividades ilegais, sua conta será suspensa se detectada.<br>
+            Algum conteúdo pode estar banido em seu país, então não acesse,<br>
+             apenas faça atividades básicas como filmes, jogos e música e pesquisas em geral,<br>
+              pornografia infantil e golpes são inaceitáveis ​​e você será severamente punido se usar<br>
+               este aplicativo para cometer esses absurdos .</center></div></div>
+        <br><div onclick="termos()" class="activebt">Concordo</div>
+      </div></div>
+
+    
+    <div id="storagemode">
+        <div class="bodyboost" style="
+        height: 241px;">
+            <img src="pictures/lock.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost"  style="
+        color: #b79608;">Acesso Restrito<br>
+        <div class="textboost">Este acesso atingiu o limite em dipositivos que pode conectar, caso esta mensagem seja um engano, contate o fornecedor de serviço para mais informações.</div></div>
+        <br><div onclick="storagemode()" class="activebt">Certo</div>
+      </div></div>
+    
+      <div id="connectedpl" >
+        <div class="bodyboost" style="
+        height: 271px;">
+            <img src="pictures/check.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost" style="
+        color: #6d86ff;
+    ">Conectado com sucesso<br>
+        <div class="textboost">Conexão bem sucedida, fique atento <b style="
+        color: cadetblue;
+    ">{{ username }}</b> faltam 56 dias para seu acesso expirar, recomendamos renovar de forma antecipada para que ele não seja excluido após acabar os dias.</div></div>
+        <br><div onclick="$('#connectedpl').fadeOut(0);" class="activebt" style="    color: white;
+        background: #12226e;">Entendi</div>
+        </div></div>
+
+
+    <div id="boostmode">
+    <div class="bodyboost">
+        <img src="pictures/boost.svg" style="
+        height: 106px;
+        position: relative;
+        top: -55px;
+    ">
+    <div class="titleboost">Modo Boost<br>
+    <div class="textboost">O modo Boost pode otimizar a velocidade e detectar os aplicativos usados &ZeroWidthSpace;&ZeroWidthSpace;para melhorar a experiência de conexão, você pode habilitar este modo. No entanto, você precisa conceder as permissões necessárias para realizar esta atividade.</div></div>
+    <br><div onclick="acboostmode()" class="activebt">Ativar</div>
+    <div onclick="boostmode()" style="margin-top: 5px; background: #9e330a;" class="activebt">Cancelar</div></div></div>
+
+    
+<div id="authtype" style="
+position: absolute;
+height: 100%;
+width: 100%;
+display:none;
+background: #000000c2;
+z-index: 5;
+"><div style="
+position: absolute;
+left: 50%;
+top: 35%;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+background: #1e2532;
+height: 250px;
+width: 330px;
+border-radius: 10px;
+text-align: center;
+"><img src="pictures/149071.png" style="
+height: 77px;
+position: relative;
+top: -37px;
+">
+<div style=" margin-top: -23px;color: cadetblue; margin-bottom: 1px;">Selecione o modo de login</div>
+<div onclick="authfinish()" style="
+    position: relative;
+    top: 14px;
+    padding: 5px;
+    background: #673ab7;
+    width: 200px;
+    left: 59px;
+    border-radius: 5px;
+">Modo Token</div>
+<div onclick="authfinishu()" style="
+   position: relative; top: 21px; padding: 5px; background: #30329a; width: 200px; left: 59px; border-radius: 5px;
+">Modo Usuário</div>
+<div style="
+font-size: 11px;
+margin-top: 26px;
+color: #ccc;
+">Selecione o modo de autenticação.</div></div></div>
+
+
+
+<div id="authuser" style="
+    position: absolute;
+    display:none;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(4px);
+    background: rgb(0 0 0 / 61%);
+    z-index: 5;
+    "><div style="
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #111724c4;
+    height: 261px;
+    width: 330px;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+"><img src="pictures/user.png" style="
+    filter: invert(1);
+    height: 77px;
+    position: relative;
+    top: -37px;
+">
+<div style="
+margin-top: -28px;
+
+">Dados de usuário</div><input type="text" id="userssh" placeholder="login" style="
+      padding: 10px;
+    border-radius: 5px;
+    background: #00000087;
+    border: 0px;
+    font-size: 18px;
+    color: #ddd;
+    margin-top: 11px;
+">
+<input type="text" id="passssh" placeholder="senha" style="
+    padding: 10px;
+    border-radius: 5px;
+    background: #00000087;
+    border: 0px;
+    font-size: 18px;
+    color: #ddd;
+    margin-top: 11px;
+">
+<div onclick="authfinishu()" style="
+    position: relative;
+    top: 14px;
+    padding: 5px;
+    background: #3f51b5;
+    width: 100px;
+    left: 106px;
+    border-radius: 5px;
+">Entrar</div></div></div>
+
+<div id="authtoken" style="
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display:none;
+    background: #000000c2;
+    z-index: 5;
+    "><div style="
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #1e2532;
+    height: 250px;
+    width: 330px;
+    border-radius: 10px;
+    text-align: center;
+"><img src="pictures/user.png" style="
+    filter: invert(1);
+    height: 77px;
+    position: relative;
+    top: -37px;
+">
+<div style="
+    margin-top: -11px;
+">Acesso token</div><input type="text" id="token" placeholder="token" style="
+    padding: 10px;
+    border-radius: 5px;
+    background: #191e25;
+    border: 0px;
+    font-size: 18px;
+    color: #999;
+    margin-top: 11px;
+">
+<div onclick="authfinish()" style="
+    position: relative;
+    top: 14px;
+    padding: 5px;
+    background: #3f51b5;
+    width: 100px;
+    left: 106px;
+    border-radius: 5px;
+">Entrar</div>
+<div style="
+    font-size: 11px;
+    margin-top: 26px;
+    color: #ccc;
+">O acesso token pode ser obtido com o fornecedor.</div></div></div>
+
+
+    <div id="withoutlogin" class="body centerbody"></div>
+
+    <div id="logsbar" onclick="viewlogs()"><div id="openlog" style="
+    text-align: center;
+    font-size: 14px;
+    margin-top: 8px;
+">🔼 Expandir Logs 🔼</div> <div id="logsview"></div></div>
+
+   
+    <div id="dontconnect" class="presshere"></div>
+    <div id="connecting" class="presshere"><div class="lds-dual-ring"></div>Conectando</div>
+    <div id="connected" class="presshere">Conexão Estabelecida</div>
+</div><div id="withoutlogin" class="header">
+
+
+<div class="focuinauth"></div>
+<div id="nrlixserver" style="
+        background: transparent;
+    width: 97%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    height: 435px;
+    border-radius: 7px;
+    top: 374px;
+    padding: 9px;
+    position: absolute;
+"><center>
+    <div id="serverlist" onclick="serverchange()">
+    
+    </div>
+    
+    
+    <div class="focuinserver"></div>
+<div class="selectedserver selectedserverz" onclick="serverchange()">
+<img id="fserver" src="pictures/flags/location.png" class="flagserver">
+<div id="nserver" class="nameserver">Defina um provedor</div>
+<div id="dserver" class="descserver">Provedor é a forma de conexão.</div>
+<img src="pictures/arrow.png" class="arrowserver">
+</div>
+
+<div class="selectedserver selectedudp" onclick="udpchange()" style="
+     width: 22%;
+    left: 0px;
+    margin-left: 1px;
+">
+
+<div id="nserver" class="nameserver" style="
+    left: 14px;
+">UDP</div>
+<div id="dserver" class="descserver descudp">7300</div>
+<img src="pictures/arrow.png" class="arrowudp">
+</div>
+
+<div class="selectedserver udplist"  style="
+     width: 22%;
+     margin-left: 1px;
+     z-index: 25;
+     position: absolute;
+     right: 3%;
+     top: 58px;
+     display:none;
+     height: 134px;
+     border-radius: 6px;
+">
+</div>
+
+<div id="nrlixuser">
+
+
+    
+    <div id="connectedvalidity" style="
+    position: relative;
+    display:none; 
+">
+  <div style="
+    padding-left: 7px;
+    font-size: 20px;
+    color: #8bc34a;
+    margin-top: 23px;
+    position: relative;
+    top: -11px;
+">Conexão estabelecida</div>🚀
+    <div id="checkvl">Checando validade...</div>
+
+</div>
+
+
+    <div id="connectedview" style="
+    position: relative;
+    display:none; 
+">
+  <div style="
+    padding-left: 7px;
+    font-size: 20px;
+    color: #8bc34a;
+    margin-top: 23px;
+    position: relative;
+    top: -11px;
+">Conexão estabelecida</div>
+<div style="
+    font-size: 44px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 67%;
+">🌍<div class="lds-ringx" style="-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 22px;transform: translate(-50%, -50%);position: absolute;top: 20%;left: 50%;width: 200px;display: block;filter: hue-rotate(7deg) drop-shadow(1px 1px 4px green);height: 34px;"><center><div style="position: relative;height: 89px;width: 89px;border: 2px double #222;border-color: #83b646 #00ff0a #8bc34a00 #8bc34a00;margin: 0px;border-radius: 50%;"></div></center></div></div>
+
+<input type="text" placeholder="Login" class="nrlixusesr inputmax" style="opacity: 0;">
+<input type="text" placeholder="Senha" style="margin-top:4px;opacity: 0;" class="nrlsixpass inputmax">
+</div>
+
+
+    <div id="startedview" style="
+    position: relative;
+    display:none;
+">
+  <div style="
+    padding-left: 7px;
+    font-size: 20px;
+    color: #a48a8c;
+    margin-top: 23px;
+">Conectando</div>
+<div style="
+    font-size: 44px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 67%;
+">🔌<div class="lds-ringx" style="-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 22px;transform: translate(-50%, -50%);position: absolute;top: 20%;left: 50%;width: 200px;display: block;filter: hue-rotate(300deg) drop-shadow(1px 1px 4px red);height: 34px;"><center><div style="position: relative;height: 89px;width: 89px;border: 3px solid #222;border-color: #000000 #9c27b0 #673ab7 #3f51b5;filter: invert(1);margin: 0px;border-radius: 50%;"></div></center></div></div>
+
+<input type="text" placeholder="Login" class="nrlixusesr inputmax" style="opacity: 0;">
+<input type="text" placeholder="Senha" style="margin-top:4px;opacity: 0;" class="nrlsixpass inputmax">
+</div>
+
+
+
+
+
+
+  <div id="accessview">
+  <div style="
+    padding-left: 7px;
+    font-size: 20px;
+    color: #818181;
+    margin-top: 23px;
+">Dados de Acesso</div>
+
+<input type="text" placeholder="Login" class="nrlixuser inputmax">
+<input type="password" placeholder="Senha" style="margin-top:4px;" class="nrlixpass inputmax">
+</div>
+<div onclick="startatlantus()" class="connectbt">Conectar</Div>
+<div id="wrongaccess" style="
+    font-size: 12px;
+    margin-top: 8px;
+    display:none;
+    color: #c54671;
+">Por favor, preencha os dados.</div>
+</div>
+
+</center></div>
+
+<div class="rightbt">
+	<div class="substatus protxt">Inativo</div>
+</div>
+
+<img onclick="menuaction()" src="pictures/menu.png" class="menuicon">
+<div id="appname"></div>
+<div class="logoapp" style="
+    background: url(pictures/logo702.png);
+    height: 107px;
+    background-size: 100% 100%;
+    width: 107px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 15%;
+    position: fixed;
+"></div>
+<div style="display:none;" class="statusserver">Status:
+<div class="substatusz">Desconectado</div>
+</div>
+</div><! –– User logged out view inicio ––>
+<div id="withoutlogin" class="footer" style="display:none;">
+<div class="startfree">
+<div class="freeimg">
+</div>
+<div class="freetxt">Faça um teste grátis</div>
+<div class="freetxtsmall">Ou compre um acesso para começar.</div>
+</div>
+</div>
+<! –– User logged out view final ––>
