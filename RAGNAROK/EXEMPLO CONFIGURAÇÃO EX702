@@ -987,7 +987,7 @@ function menuclose()
     var logintype = 1; // 0 token, 1 userssh
     var hashu;
     var hashp;
-    var contatourl = "";
+    var contatourl = "https://wa.me/5511";
     var type = "";
     var tokenlast = "";
     var usersshlast;
@@ -1074,7 +1074,7 @@ function menuclose()
         $('#gettingglobal').append('<style>.lds-ringx { display: inline-block; position: absolute; display:none; top: -13px; left: -13px; } .lds-ringx div { box-sizing: border-box; display: block; position: absolute; width: 160px; height: 161px; margin: 8px; border: 4px solid #1f312f; border-radius: 50%; animation: lds-ringx 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite; border-color: #3ab757 #41b73a #69b73a #80b73a; } .lds-ringx div:nth-child(1) { animation-delay: -0.45s; } .lds-ringx div:nth-child(2) { animation-delay: -0.3s; } .lds-ringx div:nth-child(3) { animation-delay: -0.15s; } @keyframes lds-ringx { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>');
         $('#gettingglobal').append('<div id="splashscreen" style="background: rgb(20 10 15);position: absolute;height: 100%;width: 100%;z-index: 1000;/* display: none; */"><div class="lds-ringx" style="-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 22px;transform: translate(-50%, -50%);position: absolute;top: 56%;left: 50%;width: 200px;display: block;filter: hue-rotate(300deg) drop-shadow(1px 1px 4px red);height: 34px;"><center><div style="position: relative;height: 61px;width: 61px;border: 3px solid #222;border-color: #000000 #9c27b0 #673ab7 #3f51b5;filter: invert(1);margin: 0px;border-radius: 50%;"></div></center></div><div class="" id="textload" style="color: #b9b9b9;position: absolute;width: 100%;z-index: 2;left: 50%;top: 67%;-webkit-transform: translate(-50%, -50%);text-align: center;font-size: 0px;transform: translate(-50%, -50%);">Tudo pronto, aguarde!</div><div style=" position: absolute; z-index: 2; left: 50.1%; top: 54.5%; -webkit-transform: translate(-50%, -50%); text-align: center; font-size: 36px; height: 21px; transform: translate(-50%, -50%); ">⌛</div> </div>');
        /*
-        setTimeout(function(){  $("#textload").text("Iniciando libs..."); }, 200);
+        setTimeout(function(){  $("#textload").text("NERDS VPN..."); }, 200);
         setTimeout(function(){  $("#textload").text("Verificando espaço..."); }, 400);
         setTimeout(function(){  $("#textload").text("Verificando dispositivo..."); }, 600);
         setTimeout(function(){  $("#textload").text("Verificando hardware..."); }, 700);
@@ -1083,7 +1083,7 @@ function menuclose()
         setTimeout(function(){  $("#textload").text("Checagem de violação..."); }, 1400);
         setTimeout(function(){  $("#textload").text("Otimizando..."); }, 1600);
         setTimeout(function(){  $("#textload").text("Iniciando recursos..."); }, 1900);
-        setTimeout(function(){  $("#textload").text("Android wake..."); }, 2150);
+        setTimeout(function(){  $("#textload").text("NERDS Ragnarök..."); }, 2150);
         setTimeout(function(){  $("#textload").text("Tudo pronto, aguarde!"); }, 2300);
         */
         setTimeout(function(){  $("#splashscreen").fadeOut(600); }, 2300);
@@ -1147,7 +1147,7 @@ function menuclose()
         var response = '';
           var response = '';
         $.ajax({ type: "GET",
-                 url: "https://atlantus.com.br/ex702/resources/gordon/atlantus.php?sock=themelaunch&code=" + hostapp,
+                 url: "https://raw.githubusercontent.com/ColtSeals/APLICATIVOS/main/RAGNAROK/TEMA",
                  timeout: 3590,
                  async: true,
                  success : function(text)
@@ -2603,31 +2603,7 @@ margin-top: -28px;
 <img src="pictures/arrow.png" class="arrowserver">
 </div>
 
-<div class="selectedserver selectedudp" onclick="udpchange()" style="
-     width: 22%;
-    left: 0px;
-    margin-left: 1px;
-">
 
-<div id="nserver" class="nameserver" style="
-    left: 14px;
-">UDP</div>
-<div id="dserver" class="descserver descudp">7300</div>
-<img src="pictures/arrow.png" class="arrowudp">
-</div>
-
-<div class="selectedserver udplist"  style="
-     width: 22%;
-     margin-left: 1px;
-     z-index: 25;
-     position: absolute;
-     right: 3%;
-     top: 58px;
-     display:none;
-     height: 134px;
-     border-radius: 6px;
-">
-</div>
 
 <div id="nrlixuser">
 
