@@ -8195,14 +8195,6 @@
         text-shadow: 0px 0px 10px #ffffff24;
     }
 
-    #splashscreen {
-        background: #0c0c11;
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        z-index: 500;
-    }
-
     #application {
         display: none;
     }
