@@ -8195,6 +8195,14 @@
         text-shadow: 0px 0px 10px #ffffff24;
     }
 
+    #splashscreen {
+        background: #0c0c11;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 500;
+    }
+
     #application {
         display: none;
     }
@@ -9014,397 +9022,571 @@
     }
 </style>
 <!-- extra style -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
-    <ul class="circlesEffect">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <div id="withoutlogin" class="body">
-        <div id="updatechecking"
-            style="position: absolute; bottom: 63px; display: none; left: 42px; font-size: 13px; color: #999; text-align: center;">
-            <div class="lds-dual-ring" style="height: 30px; width: 30px; position: relative; top: 7px; left: -3px;">
-            </div>
-            Buscando atualização...
-        </div>
-        <div id="menuexpand" onclick="menuclose()">
-            <div class="menulist">
-                <div class="menutxt" onclick="initupdate();">🔰 Verificar atualizações</div>
-                <div class="menutxt" onclick="termos()">📃 Termos de uso</div>
-                <div class="menutxt" onclick="settings()">⚙️ Ajustes</div>
-                <div class="menutxt hsharez" onclick="hostshare()">🔌 HostShare</div>
-                <div class="menutxt ipv6txt" style="display: none;" onclick="setipv6()">🕋 IPV6 (Desligado)</div>
-                <div class="menutxt" onclick="exitapp('')">❌ Encerrar aplicativo</div>
-            </div>
-            <div class="userprofile">
-                <div class="userid">USER-ID: 0000xx</div>
-            </div>
-            <img src="pictures/menu.png" class="menuiconx" />
-        </div>
-        <div id="settingsapp" class="atlantusoverlay">
-            <div class="bodyboost" style="height: 358px;">
-                <div class="titleboost" style="color: #ffc83d; margin-top: -121px; font-size: 90px; color: azure;">
-                    <br />
-                    <div class="textboost" style="margin-top: -55px; margin-bottom: 38px; font-size: 18px;">Área
-                        destinada a ajustes de vpn.</div>
-                </div>
-                <div style="height: 200px; overflow: scroll; position: relative; padding-top: 19px;">
-                    <div class="selectedserver udplist"
-                        style="width: 29%; z-index: 25; height: 134px; position: absolute; border-radius: 6px; background: rgb(17, 15, 29); left: 58%; top: 0px;">
-                    </div>
-                    <div class="menutxt newbtx" style="margin-bottom: -5px; margin-left: -8px; margin-top: -20px;"
-                        onclick="udpchange()">
-                        📌 Porta UDP
-                        <div id="udpbubble" class="atlcircle descudp"
-                            style="padding: 0px; padding: 0px; top: 9px; color: #999; background: transparent; font-size: 15px; left: 74%;">
-                            %</div>
-                    </div>
-                </div>
-                <br />
-                <div onclick="exitsettings()" class="activebt"
-                    style="margin-left: 5px; background: #ab2323; width: 80%; border-radius: 4px; box-shadow: 5px 4px 5px black;">
-                    Fechar
-                </div>
-            </div>
-        </div>
-        <div id="exitapp" class="atlantusoverlay">
-            <div class="bodyboost" style="height: 260px;">
-                <span class="wave"
-                    style="height: 106px; position: relative; top: -70px; font-size: 70px; margin-left: -16px;">👋</span>
-                <div class="titleboost" style="color: #ffc83d;">
-                    Deseja realmente sair?<br />
-                    <div class="textboost">Sua conexão será encerrada, se você confirmar este dialogo.</div>
-                </div>
-                <br />
-                <div onclick="exitappfinish()" class="activebt hshareon">Sim</div>
-                <div onclick="exitappclose()" class="activebt" style="margin-left: 5px; background: #b2355b;">Não</div>
-                <div onclick="exitapphide()" class="activebt"
-                    style="margin-left: 5px; background: #673ab7; margin-top: 5px;">Minimizar</div>
-            </div>
-        </div>
-        <div id="hostshare" class="atlantusoverlay">
-            <div class="bodyboost" style="height: 246px;">
-                <img src="pictures/hostshare.gif"
-                    style="height: 106px; position: relative; top: -55px; filter: invert(1);" />
-                <div class="titleboost" style="color: #2196f3;">
-                    HostShare<br />
-                    <div class="textboost">Esta função serve para rotear para outros dispositivos o hostshare, caso
-                        queira configurar, clique em gerenciar.</div>
-                </div>
-                <br />
-                <div onclick="hostshareset()" class="activebt hshareon">Gerenciar</div>
-                <div onclick="hostshareclose()" class="activebt" style="margin-left: 5px; background: #b2355b;">Cancelar
-                </div>
-            </div>
-        </div>
-        <div id="wronguser" class="atlantusoverlay">
-            <div class="bodyboost" style="height: 246px;">
-                <img src="pictures/wrong.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #ff2222;">
-                    Autenticação Falhou<br />
-                    <div class="textboost">Seus dados de usuário estão incorretos, por favor verifique novamente o seu
-                        acesso.</div>
-                </div>
-                <br />
-                <div onclick="authfinishu()" class="activebt">Corrigir</div>
-            </div>
-        </div>
-        <div id="deviceid" class="atlantusoverlay" style="display: none;">
-            <div class="bodyboost"
-                style="height: 247px; border-radius: 30px; border: 0px; background: linear-gradient(273deg, #f48931, #a32020);">
-                <img src="pictures/limiter.png"
-                    style="height: 130px; position: relative; top: -59px; margin-top: -26px;" />
-                <div class="titleboost" style="color: #f0f0f0; filter: none;">
-                    Limite Ultrapassado<br />
-                    <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
-                        <center>
-                            Este acesso já ultrapassou o limite de dispositivos registrados.<br />
-                            Entre em contato com o fornecedor para mais informações.<br />
-                        </center>
-                    </div>
-                </div>
-                <br />
-                <div onclick="deviceclose()" style="width: 200px; background: #07060c; top: -74px;" class="activebt">
-                    Confirmar</div>
-            </div>
-        </div>
+
+<div id="withoutlogin" class="body">
+    <div id="updatechecking" style="
+    position: absolute;
+    bottom: 63px;
+    display:none;
+    left: 42px;
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+"><div class="lds-dual-ring" style="
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 7px;
+    left: -3px;
+"></div>Buscando atualização...</div>
+<div id="menuexpand" onclick="menuclose()">
+    <div class="menulist">
+        <div class="menutxt" onclick=" initupdate();">🔰 Verificar atualizações</div>
+        <div class="menutxt" onclick="termos()">📃 Termos de uso</div>
+        <div class="menutxt" onclick="settings()">⚙️ Ajustes</div>
+        <div class="menutxt hsharez" style="display:none;" onclick="hostshare()">🔌 HostShare</div>
+        <div class="menutxt ipv6txt"  style="display:none;" onclick="setipv6()">🕋 IPV6 (Desligado)</div>
+        <div class="menutxt" onclick="exitapp('')">❌ Encerrar aplicativo</div>
+    </div>
+    <div class="userprofile">
+        <div class="userid">USER-ID: 0000xx</div>
+    </div>
+    <img src="pictures/menu.png" class="menuiconx" />
+</div>
+
+<div id="logexpand">
+    <div id="logslist" style="        margin-top: 51px;
+    height: 81%;
+    font-size: 09px;
+    font-family: monospace;
+    overflow: scroll;">
+     Bem vindo ao log.
+    </div>
+</div>
+
+
+
+<div id="settingsapp" class="atlantusoverlay" >
+    <div class="bodyboost" style="
+    height: 358px;
+">
+  
+    <div class="titleboost" style="       color: #ffc83d;
+    margin-top: -121px;
+    font-size: 90px;
+    color: azure;
+"><br>
+    <div class="textboost" style="
+    margin-top: -55px;
+    margin-bottom: 38px;
+    font-size: 18px;
+    ">Área destinada a ajustes de vpn.</div></div>
+    <div style="    height: 214px;
+    overflow: scroll;
+    position: relative;
+    padding-top: 19px;">
+    <div class="selectedserver udplist"  style="
+        width: 29%;
+    z-index: 25;
+    height: 134px;
+    position: absolute;
+    border-radius: 6px;
+    background: rgb(17, 15, 29);
+    left: 58%;
+    top: 0px;
+">
+</div>
+    <div class="menutxt newbtx" style="margin-bottom: -5px; margin-left: -8px; margin-top: -20px;" onclick="udpchange()">📌 Porta UDP <div id="udpbubble" class="atlcircle descudp" style="     padding: 0px;
+        padding: 0px;
+    top: 9px;
+    color: #999;
+    background: transparent;
+    font-size: 15px;
+    left: 74%;">%</div></div>
+    <div class="menutxt newbtx" style="margin-bottom: -5px; margin-left: -8px;" onclick="setipv6()">📌 IPV6 <div id="ipv6bubble" class="atlcircle"></div></div>
+    <div class="menutxt newbtx" style="margin-bottom: -5px; margin-left: -8px; " onclick="setvelocimetro()">📌 Velocimetro <div id="velocimetrobubble" class="atlcircle"></div></div>
+    <div class="menutxt newbtx" style="margin-bottom:0px;    margin-left: -8px;" onclick="setdialogpass()">📌 Evitar erro de login <div id="wrongauthbubble" class="atlcircle"></div></div>
+    <div class="menutxt newbtx" style="margin-bottom:0px;    margin-left: -8px;" onclick="setkeepvpn()">📌 KeepVPN <div id="keepvpnbubble" class="atlcircle"></div></div>
+    <div class="menutxt newbtx" style="margin-bottom:0px;    margin-left: -8px;" onclick="hostshare()">📌 Hostshare </div>
+    <div class="menutxt newbtx" style="margin-bottom:0px;    margin-left: -8px;" onclick="setdatacompression()">📌 Compressão de dados <div id="compressbubble" class="atlcircle"></div></div>
+    </div>
+    <br>
+    <div onclick="exitsettings()" class="activebt" style="margin-left: 5px;background: #ab2323;width: 80%;border-radius: 4px;box-shadow: 5px 4px 5px black;">Fechar</div>
+    </div></div>
+
+
+
+    <div id="exitapp" class="atlantusoverlay">
+        <div class="bodyboost" style="
+        height: 260px;
+    "><span class="wave" style="
+    height: 106px;
+    position: relative;
+    top: -70px;
+    font-size: 70px;
+    margin-left: -16px;
+">👋</span>
+      
+        <div class="titleboost" style="
+        color: #ffc83d;
+    ">Deseja realmente sair?<br>
+        <div class="textboost">Sua conexão será encerrada, se você confirmar este dialogo.</div></div>
+        <br>
+        <div onclick="exitappfinish()" class="activebt hshareon">Sim</div>
+        <div onclick="exitappclose()" class="activebt" style="
+    margin-left: 5px;
+    background: #b2355b;
+">Não</div><div onclick="exitapphide()" class="activebt" style="
+    margin-left: 5px;
+    background: #673ab7;
+    margin-top: 5px;
+">Minimizar</div>
+        </div></div>
+
+
+
+
+    <div id="hostshare" class="atlantusoverlay" style="">
+        <div class="bodyboost" style="
+        height: 246px;
+    ">
+            <img src="pictures/hostshare.gif" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+            filter: invert(1);
+        ">
+        <div class="titleboost" style="
+        color: #2196f3;
+    ">HostShare<br>
+        <div class="textboost">Esta função serve para rotear para outros dispositivos o hostshare, caso queira configurar, clique em gerenciar.</div></div>
+        <br>
+        <div onclick="hostshareset()" class="activebt hshareon">Gerenciar</div>
+        <div onclick="hostshareclose()" class="activebt" style="
+    margin-left: 5px;
+    background: #b2355b;
+">Cancelar</div>
+        </div></div>
+
+
+
+    <div id="wronguser" class="atlantusoverlay">
+        <div class="bodyboost" style="
+        height: 246px;
+    ">
+            <img src="pictures/wrong.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost" style="
+        color: #ff2222;
+    ">Autenticação Falhou<br>
+        <div class="textboost">Seus dados de usuário estão incorretos, por favor verifique novamente o seu acesso.</div></div>
+        <br><div onclick="authfinishu()" class="activebt">Corrigir</div>
+        </div></div>
+
+
+        <div id="deviceid" class="atlantusoverlay" style="display:none;">
+            <div class="bodyboost" style="height: 247px;border-radius: 30px;border: 0px;background: linear-gradient(273deg, #f48931, #a32020);">
+                <img src="pictures/limiter.png" style="
+                height: 130px;
+                position: relative;
+                top: -59px;
+                margin-top: -26px;
+            ">
+            <div class="titleboost" style="
+            color: #f0f0f0;
+            filter: none;
+            ">Limite Ultrapassado<br>
+            <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
+              <center>Este acesso já ultrapassou o limite de dispositivos registrados.<br>
+             Entre em contato com o fornecedor para mais informações.<br>
+            </center></div></div>
+            <br><div onclick="deviceclose()" style="
+            width: 200px;
+            background: #07060c;
+            top: -74px;
+            " class="activebt">Confirmar</div>
+          </div></div>
+
         <div id="permissao" class="atlantusoverlay" style="display: none;">
             <div class="bodyboost">
-                <img src="pictures/terms.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #ffd800; filter: none;">
-                    Permissão Necessária<br />
-                    <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
-                        <center>
-                            Você precisa permitir a sobreposição, isso serve para que a VPN sempre se<br />
-                            mantenha ativa e também com o processo acima de outros aplicativos para que o sistema não
-                            encerre a menos que você mesmo faça.<br />
-                            Você só precisa fazer isso uma única vez.
-                        </center>
-                    </div>
-                </div>
-                <br />
-                <div onclick="permitirsob()" style="width: 200px; background: #fe9500;" class="activebt">Permitir</div>
-            </div>
-        </div>
-        <div id="logsviewnew" class="atlantusoverlay" style="display: none;">
-            <div class="bodyboost" style="height: 69%; top: 50%;">
-                <img src="pictures/document.png" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #e64c3c;">
-                    <div id="logslist" class="textboost"
-                        style="font-size: 12px; color: #e6e6e6; height: 168px; overflow: scroll; border-bottom: 2px solid; height: 79%; margin-top: 22px;">
-                        <center>-- Bem vindo aos registros --</center>
-                    </div>
-                </div>
-                <br />
-                <div onclick="logsviewnewclose()" class="activebt" style="width: 300px; top: -19px;">Fechar</div>
-            </div>
-        </div>
-        <div id="termos" class="atlantusoverlay">
-            <div class="bodyboost">
-                <img src="pictures/terms.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #e64c3c;">
-                    Termos de Uso<br />
-                    <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
-                        <center>
-                            Certifique-se de não usar este aplicativo para atividades ilegais, sua conta será suspensa
-                            se detectada.<br />
-                            Algum conteúdo pode estar banido em seu país, então não acesse,<br />
-                            apenas faça atividades básicas como filmes, jogos e música e pesquisas em geral,<br />
-                            pornografia infantil e golpes são inaceitáveis ​​e você será severamente punido se
-                            usar<br />
-                            este aplicativo para cometer esses absurdos .
-                        </center>
-                    </div>
-                </div>
-                <br />
-                <div onclick="termos()" class="activebt">Concordo</div>
-            </div>
-        </div>
-        <div id="validadeapp" class="atlantusoverlay" style="display: none;">
-            <div class="bodyboost" style="height: 148px; background: white; border: 0px;">
-                <div id="textvalidade" style="position: absolute; color: #333; width: 100%; top: 45px; left: 0px;">
-                    <div class="lds-dual-ringzpzp"></div>
-                </div>
-                <img src="pictures/pet.png" style="position: absolute; right: -12px; top: -87px; height: 114px;" />
-                <div class="titleboost" style="color: #ffc83d; margin-top: -121px; font-size: 90px;">
-                    <br />
-                    <div class="textboost"
-                        style="margin-top: -55px; margin-bottom: 38px; font-size: 18px; color: #222;">Checando Validade
-                    </div>
-                </div>
-                <br />
-                <div onclick="closevalidity()" class="activebt"
-                    style="margin-left: 5px; background: #313048; width: 80%; border-radius: 4px; box-shadow: 5px 4px 5px black; margin-top: 17px;">
-                    Fechar
-                </div>
-            </div>
-        </div>
-        <div id="devtest" style="display: none;" class="atlantusoverlay">
-            <div class="bodyboost">
-                <img src="pictures/terms.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #e64c3c;">
-                    Aplicativo de TESTE<br />
-                    <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
-                        <center>
-                            Esse aplicativo é apenas um teste produzido por RGN & ATLANTUS.<br />
-                            Não divulgue esta versão, não altere nem faça nada.<br />
-                            Teste conexões e afins.<br />
-                            Agradecemos sua contribuição.
-                        </center>
-                    </div>
-                </div>
-                <br />
-                <div onclick="dev()" class="activebt">Concordo</div>
-            </div>
-        </div>
-        <div id="storagemode">
-            <div class="bodyboost" style="height: 241px;">
-                <img src="pictures/lock.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #b79608;">
-                    Acesso Restrito<br />
-                    <div class="textboost">Este acesso atingiu o limite em dipositivos que pode conectar, caso esta
-                        mensagem seja um engano, contate o fornecedor de serviço para mais informações.</div>
-                </div>
-                <br />
-                <div onclick="storagemode()" class="activebt">Certo</div>
-            </div>
-        </div>
-        <div id="connectedpl">
-            <div class="bodyboost" style="height: 271px;">
-                <img src="pictures/check.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost" style="color: #6d86ff;">
-                    Conectado com sucesso<br />
-                    <div class="textboost">
-                        Conexão bem sucedida, fique atento <b style="color: cadetblue;">{{ username }}</b> faltam 56
-                        dias para seu acesso expirar, recomendamos renovar de forma antecipada para que ele não seja
-                        excluido após acabar os dias.
-                    </div>
-                </div>
-                <br />
-                <div onclick="$('#connectedpl').fadeOut(0);" class="activebt"
-                    style="color: white; background: #12226e;">Entendi</div>
-            </div>
-        </div>
-        <div id="boostmode">
-            <div class="bodyboost">
-                <img src="pictures/boost.svg" style="height: 106px; position: relative; top: -55px;" />
-                <div class="titleboost">
-                    Modo Boost<br />
-                    <div class="textboost">
-                        O modo Boost pode otimizar a velocidade e detectar os aplicativos usados
-                        &ZeroWidthSpace;&ZeroWidthSpace;para melhorar a experiência de conexão, você pode habilitar este
-                        modo. No entanto, você precisa conceder as
-                        permissões necessárias para realizar esta atividade.
-                    </div>
-                </div>
-                <br />
-                <div onclick="acboostmode()" class="activebt">Ativar</div>
-                <div onclick="boostmode()" style="margin-top: 5px; background: #9e330a;" class="activebt">Cancelar</div>
-            </div>
-        </div>
-        <div id="authtype"
-            style="position: absolute; height: 100%; width: 100%; display: none; background: #000000c2; z-index: 5;">
-            <div
-                style="position: absolute; left: 50%; top: 35%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background: #1e2532; height: 250px; width: 330px; border-radius: 10px; text-align: center;">
-                <img src="pictures/149071.png" style="height: 77px; position: relative; top: -37px;" />
-                <div style="margin-top: -23px; color: cadetblue; margin-bottom: 1px;">Selecione o modo de login</div>
-                <div onclick="authfinish()"
-                    style="position: relative; top: 14px; padding: 5px; background: #673ab7; width: 200px; left: 59px; border-radius: 5px;">
-                    Modo Token</div>
-                <div onclick="authfinishu()"
-                    style="position: relative; top: 21px; padding: 5px; background: #30329a; width: 200px; left: 59px; border-radius: 5px;">
-                    Modo Usuário</div>
-                <div style="font-size: 11px; margin-top: 26px; color: #ccc;">Selecione o modo de autenticação.</div>
-            </div>
-        </div>
-        <div id="authtoken"
-            style="position: absolute; height: 100%; width: 100%; display: none; background: #000000c2; z-index: 5;">
-            <div
-                style="position: absolute; left: 50%; top: 35%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background: #1e2532; height: 250px; width: 330px; border-radius: 10px; text-align: center;">
-                <img src="pictures/user.png" style="filter: invert(1); height: 77px; position: relative; top: -37px;" />
-                <div style="margin-top: -11px;">Acesso token</div>
-                <input type="text" id="token" placeholder="token"
-                    style="padding: 10px; border-radius: 5px; background: #191e25; border: 0px; font-size: 18px; color: #999; margin-top: 11px;" />
-                <div onclick="authfinish()"
-                    style="position: relative; top: 14px; padding: 5px; background: #3f51b5; width: 100px; left: 106px; border-radius: 5px;">
-                    Entrar</div>
-                <div style="font-size: 11px; margin-top: 26px; color: #ccc;">O acesso token pode ser obtido com o
-                    fornecedor.</div>
-            </div>
-        </div>
-        <div id="logsbar" style="display: none;" onclick="viewlogs()">
-            <div id="openlog" style="text-align: center; font-size: 14px; margin-top: 8px;">🔼 Expandir Logs 🔼</div>
-            <div id="logsview"></div>
-        </div>
+                <img src="pictures/terms.svg" style="
+                height: 106px;
+                position: relative;
+                top: -55px;
+            ">
+            <div class="titleboost" style="
+            color: #ffd800; filter: none;">Permissão Necessária<br>
+            <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
+              <center>Você precisa permitir a sobreposição, isso serve para que a VPN sempre se<br>
+                 mantenha ativa e também com o processo acima de outros aplicativos
+                   para que o sistema não encerre a menos que você mesmo faça.<br>
+                   Você só precisa fazer isso uma única vez.</center></div></div>
+            <br><div onclick="permitirsob()" style="
+            width: 200px;
+            background: #fe9500;" class="activebt">Permitir</div>
+          </div></div>
 
-        <div id="dontconnect" class="presshere divField">Pronto para iniciar</div>
-        <div id="connecting" class="presshere divField">
-            <div class="lds-dual-ring"></div>
-            Conectando
-        </div>
-        <div id="connected" class="presshere divField">Conexão Estabelecida</div>
+          
+
+
+    <div id="termos" class="atlantusoverlay">
+        <div class="bodyboost">
+            <img src="pictures/terms.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost"  style=" color: #e64c3c;">Termos de Uso<br>
+        <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
+          <center>Certifique-se de não usar este aplicativo para atividades ilegais, sua conta será suspensa se detectada.<br>
+            Algum conteúdo pode estar banido em seu país, então não acesse,<br>
+             apenas faça atividades básicas como filmes, jogos e música e pesquisas em geral,<br>
+              pornografia infantil e golpes são inaceitáveis ​​e você será severamente punido se usar<br>
+               este aplicativo para cometer esses absurdos .</center></div></div>
+        <br><div onclick="termos()" class="activebt">Concordo</div>
+      </div></div>
+
+
+
+      <div id="validadeapp" class="atlantusoverlay" style="display: none;">
+        <div class="bodyboost" style="
+        height: 148px;
+        background: white;
+        border: 0px;
+    "><div id="textvalidade" style="
+        position: absolute;
+        color: #333;
+        width: 100%;
+        top: 45px;
+        left: 0px;
+    "><div class="lds-dual-ringzpzp"></div></div>
+        
+        <img src="pictures/pet.png" style="
+        position: absolute;
+        right: -12px;
+        top: -87px;
+        height: 114px;
+    ">
+      
+        <div class="titleboost" style="
+        color: #ffc83d;
+        margin-top: -121px;
+        font-size: 90px;
+    "><br>
+        <div class="textboost" style="
+        margin-top: -55px;
+        margin-bottom: 38px;
+        font-size: 18px;
+        color: #222;
+        ">Checando Validade</div></div>
+        
+        <br>
+        <div onclick="closevalidity()" class="activebt" style="margin-left: 5px;background: #313048;width: 80%;border-radius: 4px;box-shadow: 5px 4px 5px black;margin-top: 17px;">Fechar</div>
+        </div></div>
+
+      
+
+
+
+
+
+
+    <div id="devtest" style="display:none;" class="atlantusoverlay">
+        <div class="bodyboost">
+            <img src="pictures/terms.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost"  style=" color: #e64c3c;">Aplicativo de TESTE<br>
+        <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
+          <center>Esse aplicativo é apenas um teste produzido por RGN & ATLANTUS.<br>
+            Não divulgue esta versão, não altere nem faça nada.<br>
+            Teste conexões e afins.<br>
+              Agradecemos sua contribuição.</center></div></div>
+        <br><div onclick='dev()' class="activebt">Concordo</div>
+      </div></div>
+
+    
+    <div id="storagemode">
+        <div class="bodyboost" style="
+        height: 241px;">
+            <img src="pictures/lock.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost"  style="
+        color: #b79608;">Acesso Restrito<br>
+        <div class="textboost">Este acesso atingiu o limite em dipositivos que pode conectar, caso esta mensagem seja um engano, contate o fornecedor de serviço para mais informações.</div></div>
+        <br><div onclick="storagemode()" class="activebt">Certo</div>
+      </div></div>
+    
+      <div id="connectedpl" >
+        <div class="bodyboost" style="
+        height: 271px;">
+            <img src="pictures/check.svg" style="
+            height: 106px;
+            position: relative;
+            top: -55px;
+        ">
+        <div class="titleboost" style="
+        color: #6d86ff;
+    ">Conectado com sucesso<br>
+        <div class="textboost">Conexão bem sucedida, fique atento <b style="
+        color: cadetblue;
+    ">{{ username }}</b> faltam 56 dias para seu acesso expirar, recomendamos renovar de forma antecipada para que ele não seja excluido após acabar os dias.</div></div>
+        <br><div onclick="$('#connectedpl').fadeOut(0);" class="activebt" style="    color: white;
+        background: #12226e;">Entendi</div>
+        </div></div>
+
+
+    <div id="boostmode">
+    <div class="bodyboost">
+        <img src="pictures/boost.svg" style="
+        height: 106px;
+        position: relative;
+        top: -55px;
+    ">
+    <div class="titleboost">Modo Boost<br>
+    <div class="textboost">O modo Boost pode otimizar a velocidade e detectar os aplicativos usados &ZeroWidthSpace;&ZeroWidthSpace;para melhorar a experiência de conexão, você pode habilitar este modo. No entanto, você precisa conceder as permissões necessárias para realizar esta atividade.</div></div>
+    <br><div onclick="acboostmode()" class="activebt">Ativar</div>
+    <div onclick="boostmode()" style="margin-top: 5px; background: #9e330a;" class="activebt">Cancelar</div></div></div>
+
+    
+<div id="authtype" style="
+position: absolute;
+height: 100%;
+width: 100%;
+display:none;
+background: #000000c2;
+z-index: 5;
+"><div style="
+position: absolute;
+left: 50%;
+top: 35%;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+background: #1e2532;
+height: 250px;
+width: 330px;
+border-radius: 10px;
+text-align: center;
+"><img src="pictures/149071.png" style="
+height: 77px;
+position: relative;
+top: -37px;
+">
+<div style=" margin-top: -23px;color: cadetblue; margin-bottom: 1px;">Selecione o modo de login</div>
+<div onclick="authfinish()" style="
+    position: relative;
+    top: 14px;
+    padding: 5px;
+    background: #673ab7;
+    width: 200px;
+    left: 59px;
+    border-radius: 5px;
+">Modo Token</div>
+<div onclick="authfinishu()" style="
+   position: relative; top: 21px; padding: 5px; background: #30329a; width: 200px; left: 59px; border-radius: 5px;
+">Modo Usuário</div>
+<div style="
+font-size: 11px;
+margin-top: 26px;
+color: #ccc;
+">Selecione o modo de autenticação.</div></div></div>
+
+
+
+
+<div id="authtoken" style="
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display:none;
+    background: #000000c2;
+    z-index: 5;
+    "><div style="
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #1e2532;
+    height: 250px;
+    width: 330px;
+    border-radius: 10px;
+    text-align: center;
+"><img src="pictures/user.png" style="
+    filter: invert(1);
+    height: 77px;
+    position: relative;
+    top: -37px;
+">
+<div style="
+    margin-top: -11px;
+">Acesso token</div><input type="text" id="token" placeholder="token" style="
+    padding: 10px;
+    border-radius: 5px;
+    background: #191e25;
+    border: 0px;
+    font-size: 18px;
+    color: #999;
+    margin-top: 11px;
+">
+<div onclick="authfinish()" style="
+    position: relative;
+    top: 14px;
+    padding: 5px;
+    background: #3f51b5;
+    width: 100px;
+    left: 106px;
+    border-radius: 5px;
+">Entrar</div>
+<div style="
+    font-size: 11px;
+    margin-top: 26px;
+    color: #ccc;
+">O acesso token pode ser obtido com o fornecedor.</div></div></div>
+
+
+
+    <div id="logsbar" style="display:none;" onclick="viewlogs()"><div id="openlog" style="
+    text-align: center;
+    font-size: 14px;
+    margin-top: 8px;
+">🔼 Expandir Logs 🔼</div> <div id="logsview"></div></div>
+
+
+    <div id="dontconnect" class="presshere divField">Pronto para iniciar</div>
+    <div id="connecting" class="presshere divField"><div class="lds-dual-ring"></div>Conectando</div>
+    <div id="connected" class="presshere divField">Conexão Estabelecida</div>
+</div><div id="withoutlogin" class="header">
+    <div class="moonbottom divField" id="moonbottom"></div>
+
+<div class="focuinauth"></div>
+<div id="nrlixserver" style="
+"><center>
+    <div id="serverlist" onclick="serverchange()">
+    
     </div>
-    <div id="withoutlogin" class="header">
-        <div class="moonbottom divField" id="moonbottom">
-            <div onclick="logsviewnewopen()" style="
-                    position: absolute;
-                    transform: translate(-50%, -50%);
-                    bottom: 41%;
-                    left: 50%;
-                    font-size: 18px;
-                    text-align: center;
-                    color: #000000;
-                    z-index: 6;
-                    border-bottom: 1px dashed;
-                    width: 142px;
-                    padding-left: 17px;
-                ">
-                <img src="pictures/share.png"
-                    style="height: 20px; position: absolute; margin-left: -26px; margin-top: 7px;" />Registros
-            </div>
-        </div>
-        <div class="focuinauth"></div>
-        <div id="nrlixserver">
-            <center>
-                <div id="serverlist" onclick="serverchange()"></div>
-                <div class="focuinserver"></div>
-                <div id="authshow">
-                    <div id="contentblock"
-                        style="position: fixed; top: -49px; width: 97%; z-index: 21; display: none; height: 106%;">
-                    </div>
-                    <div class="selectedserver selectedserverz" onclick="serverchange()">
-                        <img id="fserver" src="pictures/flags/location.png" class="flagserver" />
-                        <div id="nserver" class="nameserver">Defina um provedor</div>
-                        <div id="dserver" class="descserver">O modo de proteção</div>
-                        <img src="pictures/arrow.png" class="arrowserver" />
-                    </div>
-                    <div style="
-                            background: #04030491;
-                            width: 91%;
-                            height: 29px;
-                            border-radius: 4px;
-                            z-index: 5;
-                            padding: 9px;
-                            border: 1px solid #0d0d26;
-                            position: relative;
-                            display: inline-block;
-                            margin-top: -43px;
-                            box-shadow: 4px 5px 8px 0px #000000;
-                        ">
-                        <img src="pictures/user.png"
-                            style="position: absolute; left: 10px; height: 24px; top: 11px; filter: invert(1); opacity: 0.8;" />
-                        <input placeholder="Login" class="nrlixuser"
-                            style="position: absolute; width: 82%; left: 50px; padding: 8px; background: transparent; border: 0px; font-size: 19px; color: #ffffff; top: 5px; outline: 0;" />
-                    </div>
+    
+    <div class="focuinserver"></div>
 
-                    <div class="divField" style="
-                            background: #04030491;
-                            width: 91%;
-                            height: 29px;
-                            border-radius: 4px;
-                            z-index: 5;
-                            padding: 9px;
-                            border: 1px solid #0d0d26;
-                            position: relative;
-                            display: inline-block;
-                            margin-top: 8px;
-                            box-shadow: 4px 5px 8px 0px #000000;
-                        ">
-                        <img src="pictures/pass.png"
-                            style="position: absolute; left: 10px; height: 24px; top: 11px; filter: invert(1); opacity: 0.8;" />
-                        <input placeholder="Senha" class="nrlixpass"
-                            style="position: absolute; width: 82%; left: 50px; padding: 8px; background: transparent; border: 0px; font-size: 19px; color: #ffffff; top: 5px; outline: 0;" />
-                    </div>
 
-                    <div onclick="startatlantus()" class="connectbt divField" style="z-index: 22;">
-                        <div class="starttext divField">Conectar</div>
-                    </div>
-                </div>
-            </center>
-        </div>
-        <div id="menubutton" class="registerbubble divField" style="left: 14%; top: 11%;" onclick="menuaction()">
-            <img src="pictures/menububble.png"
-                style="position: relative; left: -31px; top: 1px; height: 22px; padding: 5px; filter: invert(1);"
-                class="menuicon" />
-            <div style="position: absolute; top: 6px; left: 39px;">Menu</div>
-        </div>
-        <div id="appname"></div>
-        <img class="logoapp divField" id="logoapp" style="left: 50%; top: 13%;" src="pictures/atlantus.png" />
-        <div class="logoappx"
-            style="display: none; height: 107px; background-size: 100% 100%; width: 107px; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); left: 50%; top: 109px; position: fixed;">
-        </div>
-        <div style="display: none;" class="statusserver">
-            Status:
-            <div class="substatusz">Desconectado</div>
-        </div>
+
+<div id="authshow">
+    <div id="contentblock" style="
+    position: fixed;
+    top: -49px;
+    width: 97%;
+    z-index: 21;
+    display: none;
+    height: 106%;
+"></div>
+
+    <div class="selectedserver selectedserverz" onclick="serverchange()">
+    <img id="fserver" src="pictures/flags/none.png" class="flagserver">
+    <div id="nserver" class="nameserver">Defina um provedor</div>
+    <div id="dserver" class="descserver">O modo de proteção</div>
+    <img src="pictures/arrow.png" class="arrowserver">
     </div>
-</body>
+<div style="
+    background: #04030491;
+    width: 91%;
+    height: 29px;
+    border-radius: 4px;
+    z-index: 5;
+    padding: 9px;
+    border: 1px solid #0d0d26;
+    position: relative;
+    display: inline-block;
+    margin-top: -43px;
+    box-shadow: 4px 5px 8px 0px #000000;
+"><img src="pictures/user.png" style="
+    position: absolute;
+    left: 10px;
+    height: 24px;
+    top: 11px;
+    filter: invert(1);
+    opacity: 0.8;
+"><input placeholder="Login" class="nrlixuser" style="
+    position: absolute;
+    width: 82%;
+    left: 50px;
+    padding: 8px;
+    background: transparent;
+    border: 0px;
+    font-size: 19px;
+    color: #797979;
+    top: 5px;
+"></div><div class="divField" style="
+    background: #04030491;
+    width: 91%;
+    height: 29px;
+    border-radius: 4px;
+    z-index: 5;
+    padding: 9px;
+    border: 1px solid #0d0d26;
+    position: relative;
+    display: inline-block;
+    margin-top: 8px;
+    box-shadow: 4px 5px 8px 0px #000000;
+"><img src="pictures/pass.png" style="
+    position: absolute;
+    left: 10px;
+    height: 24px;
+    top: 11px;
+    filter: invert(1);
+    opacity: 0.8;
+"><input placeholder="Senha" class="nrlixpass" style="
+    position: absolute;
+    width: 82%;
+    left: 50px;
+    padding: 8px;
+    background: transparent;
+    border: 0px;
+    font-size: 19px;
+    color: #797979;
+    top: 5px;
+"></div>
+<div onclick="startatlantus()" class="connectbt divField" style="z-index: 22;">
+  <div class="starttext divField">Conectar</div></div>
+</div>
+
+</center></div>
+
+<div class="abstract"></div>
+<div class="rightbt">
+    <div class="logbubble">0</div>
+    <img onclick="menuaction()" src="pictures/newmenu.png" class="menuicon">
+    <img onclick="logaction()" src="pictures/newlog.png" class="menuicon" style="
+    top: 53px;
+">
+</div>
+
+<div id="appname"></div>
+<img class="logoapp divField" id="logoapp" style="
+left: 50%;
+top: 13%;" src="pictures/atlantus.png">
+<div class="logoappx" style="
+    display:none;
+     height: 107px;
+    background-size: 100% 100%;
+    width: 107px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 109px;
+    position: fixed;
+"></div>
+<div style="display:none;" class="statusserver">Status:
+<div class="substatusz">Desconectado</div>
+</div>
+
+    
