@@ -1,0 +1,1021 @@
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'><style>@font-face {
+      font-family: 'Palanquin Dark';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(pictures/atlantus.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    style>@font-face {
+      font-family: 'Palanquin Dark';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(pictures/atlantus.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+
+    .container{
+      background-color: #000;
+  }
+  .titulo-principal{
+      max-width: 480px;
+      text-align: center;
+      margin: 60px auto;
+      font-family:'Courier New', Courier, monospace;
+      color: #fff;
+  }
+  .titulo-principal:after{
+  content: '|';
+  margin-left: 5px;
+  opacity: 1;
+  animation: pisca .7s infinite;
+  }
+  /* Animação aplicada ao content referente a classe *.titulo-principal* resultando num efeito de cursor piscando. */
+
+  @keyframes pisca{
+      0%, 100%{
+          opacity: 1;
+      }
+      50%{
+          opacity: 0;
+      }
+  }
+
+
+  body
+  {
+      overflow: hidden;
+      position: fixed;
+      font-family: 'Palanquin Dark', sans-serif;
+      background: linear-gradient( 
+  250deg
+  , #20144a, #000000, #ff5722);
+      color: white;
+      margin: 0px;
+      left: 0px;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+  }
+
+  .notification
+  {
+      width: 90%;
+      text-align: center;
+      position: relative;
+      background: linear-gradient( 
+  45deg
+  , #000000, #2c2a49);
+      border-radius: 5px;
+      position: absolute;
+      left: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 35px;
+      padding-top: 5px;
+      display: none;
+      z-index: 2;
+      top: 303%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  }
+
+  #logsview
+  {
+        position: absolute;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      top: 80%;
+      left: 50%;
+      height: 40px;
+      font-size: 11px;
+      width: 200px;
+      text-align: center;
+      color: #ccc;
+      overflow:scroll;
+  }
+  #connecting
+  {   
+    display:  none;
+      margin-left: 7px;
+      color: #75a2c5;
+  }
+  #connected
+  {
+    display:none;
+      color: #7fffdc;
+  }
+  .lds-ring {
+  display: inline-block;
+      position: absolute;
+      display:none;
+      top: -13px;
+      left: -13px;
+  }
+  .lds-ring div {
+        box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 160px;
+      height: 161px;
+      margin: 8px;
+      border: 8px solid #1f312f;
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #cddc39 #cddc3999 #cddc3940 #00968830;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .lds-dual-ring {
+  display: inline-block;
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      margin-left: -35px;
+      margin-top: 1px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+      display: block;
+      width: 17px;
+      height: 17px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      border-color: #fff #fff5f536 #fff white;
+      animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .flagserver
+  {
+      height: 38px;
+      position: absolute;
+      left: 11px;
+      top: 10px;
+  }
+  .substatus
+  {
+      display: inline-block;
+      font-size: 14px;
+      position: relative;
+      left: 10px;
+      top: 0px;
+  }
+  .statusserver
+  {
+      position: absolute;
+      width: 100%;
+      top: 75px;
+      text-align: left;
+      font-size: 15px;
+      color: #ffffff;
+      display: inline-block;
+      text-shadow: 0px 0px 20px black;
+      left: -51px;
+  }
+  .arrowserver
+  {
+    position: absolute;
+      right: 13px;
+      height: 18px;
+      top: 21px;
+      filter: invert(1);
+  }
+
+  .descserver
+  {
+      width: 59%;
+      text-align: left;
+      height: 22px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: absolute;
+      top: 28px;
+      font-size: 12px;
+      left: 67px;
+      color: #ccc;
+  }
+
+  .inputmax
+  {
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 38%;
+      padding: 13px;
+      background: #000000d6;
+      font-size: 18px;
+      z-index: 7;
+      border: 0px;
+      color: white;
+      border-radius: 5px;
+  }
+  .nameserver
+  {
+      position: absolute;
+      top: 8px;
+      font-size: 15px;
+      width: 64%;
+      text-align: left;
+      left: 67px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  .selectedserver
+  {   
+      background: linear-gradient(
+          45deg
+          , black, #34325ac7);
+              width: 66%;
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+              left: 61%;
+              height: 40px;
+              border-radius: 60px;
+              top: 41px;
+              padding: 9px;
+              position: absolute;
+  }
+
+  #menuexpand
+  {
+        position: absolute;
+      left: 0px;
+      height: 100%;
+      bottom: 0px;
+      display: none;
+      width: 300px;
+      background: linear-gradient(
+  45deg
+  , black, #250200ed, #560400d4);
+      z-index: 4;
+      border-bottom-right-radius: 20px;
+      border-top-right-radius: 20px;
+  }
+
+  .presshere
+  {
+      position: absolute;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      top: 73%;
+      left: 50%;
+      font-size: 20px;
+      width: 330px;
+      text-align: center;
+  }
+
+  .connectbt
+  {
+      height: 120px;
+      width: 120px;
+      background: #ffffff url(pictures/power.svg);
+      BORDER-RADIUS: 100%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      background-size: 53px !important;
+      background-repeat: no-repeat;
+      background-position: 34px !important;
+      filter: invert(1);
+      top: 60%;
+      left: 50%;
+      
+      z-index: 1;
+  }
+
+  .freeimg
+  {
+    height: 40px;
+      width: 40px;
+      background: #ffffff4d url(pictures/crown.png);
+      background-repeat: no-repeat;
+      background-position: 5px;
+      border-radius: 60px;
+      position: absolute;
+      top: 9px;
+      left: 6px;
+  }
+
+  .freetxtsmall
+  {
+        position: absolute;
+      left: 58px;
+      top: 26px;
+      color: #ccc;
+      font-size: 12px;
+  }
+  .freetxt
+  {
+    position: absolute;
+      left: 58px;
+      top: 4px;
+      font-size: 17px;
+  }
+
+  .header
+  {
+    position: fixed;
+      top: 57px;
+    left: 0px; 
+    width: 100%;
+    z-index:3;
+    text-align: center;
+  }
+
+  .startfree
+  {
+      width: 300px;
+      height: 60px;
+      background: #4b0e79;
+      position: absolute;
+      left: 50%;
+      bottom: 27px;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+  }
+
+  .centerbody
+  {
+      background: url(pictures/map@.png);
+      position: absolute;
+      opacity: 0.1;
+      height: 495px;
+      width: 100%;
+      z-index: 1;
+      left: 50%;
+      background-size: 200% 100%;
+      background-position-x: -120px;
+      top: 49%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  }
+
+  #application
+  {
+  }
+  .menuiconx
+  {
+        position: absolute;
+      right: 19px;
+      filter: invert(1);
+      top: 44px;
+      height: 24px;
+  }
+
+  #appname
+  {
+      font-size: 26px;
+      color: #03a9f4;
+      text-transform: uppercase;
+  }
+
+  .pingserver
+  {
+    position: absolute;
+      right: 14px;
+      font-size: 13px;
+      color: #ccc;
+  }
+
+  .premiumserver
+  {
+    display:none;
+  }
+
+  .bronzeserver
+  {
+    display: none;
+  }
+
+  .freeserver
+  {
+  }
+
+  .goldserver
+  {
+    display: none;
+  }
+
+  .recommendserver
+  {
+    display: none;
+  }
+
+  .greenping
+  {
+      background: #49ff50;
+      width: 5px;
+      height: 13px;
+      position: absolute;
+      right: -8px;
+      border-radius: 55px;
+      top: 7px;
+  }
+  .svbubble
+  {
+      background: #1d212a;
+      width: 88%;
+      transform: translate(-50%, 0%);
+      left: 45%;
+      height: 50px;
+      border-radius: 19px;
+      top: 6px;
+      margin-bottom: 7px;
+      padding: 9px;
+      position: relative;
+  }
+
+  .typeserver
+  {
+      position: relative;
+      width: 100%;
+      text-align: left;
+      padding-left: 20px;
+      top: 20px;
+
+  }
+  .userprofile
+  {
+        background: url(pictures/149071.png);
+      position: relative;
+      height: 80px;
+      width: 220px;
+      background-size: 80px 80px;
+      border-bottom: 1px solid #2b3548;
+      background-repeat: no-repeat;
+      left: 40px;
+      top: 100px;
+      padding-bottom: 50px;
+      background-position-x: 65px;
+  }
+
+  #serverlist
+  {
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 768%;
+      background: #00000075;
+      border-radius: 20px;
+      left: 50%;
+      display: none;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      width: 98%;
+      height: 400px;
+      padding-bottom: 100px;
+  }
+
+  .userid
+  {
+        position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: #909090;
+  }
+
+  .userexp
+  {
+        position: absolute;
+          bottom: 23px;
+      color: #8e8e8e;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+  }
+  .menulist
+  {
+    position: absolute;
+      color: #adadaf;
+      top: 275px;
+      left: 52px;
+  }
+  .menuicon
+  {
+    position: absolute;
+      left: 19px;
+      filter: invert(1);
+      top: 11px;
+      height: 24px;
+  }
+
+  .menutxt
+  {
+        position: relative;
+      margin-bottom: 30px;
+  }
+  .rightbt
+  {
+    position: absolute;
+      right: 5px;
+      padding: 7px;
+      border-radius: 5px;
+      width: 62px;
+      top: 5px;
+      padding-right: 8px;
+
+  }
+
+  .menuicond
+  {
+    position: absolute;
+      height: 18px;
+      left: -27px;
+      top: 6px;
+      filter: invert(1);
+      opacity: 0.77;
+  }
+  .crowimg
+  {
+      height: 18px;
+      position: absolute;
+      left: 5px;
+      top: 9px;
+  }
+
+  .activebt
+  {
+      position: relative;
+      top: 14px;
+      padding: 5px;
+      background: #3f51b5;
+      width: 100px;
+      left: 106px;
+      border-radius: 5px;
+  }
+  .textboost
+  {
+      font-size: 14px;
+          color: #e6e6e6;
+  }
+  .titleboost
+  {
+      margin-top: -59px;
+          font-size: 24px;
+          color: #ffa382;
+  }
+  .bodyboost
+  {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background: #420000;
+      height: 350px;
+      width: 330px;
+      border-radius: 10px;
+      text-align: center;
+  }
+  .atlantusoverlay
+  {
+      display: none;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.76);
+      z-index: 5;
+  }
+  #boostmode
+  {
+      display:none;
+      position: absolute; height: 100%;
+      width: 100%; background: rgba(0, 0, 0, 0.76); z-index: 5;
+  }
+  #storagemode
+  {
+      display:none;
+      position: absolute; height: 100%;
+      width: 100%; background: rgba(0, 0, 0, 0.76); z-index: 5;
+  }
+  .protxt
+  {
+      position: relative;
+      left: 9px;
+      color: #fbc14d;
+      font-weight: 100;
+      text-shadow: 0px 0px 20px yellow;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+      top: -1px;
+  }</style><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div id="withoutlogin" class="body">
+      <div id="scamme" style="
+      overflow: hidden;
+      position: fixed;
+      font-family: 'Palanquin Dark', sans-serif;
+      background: url(http://51.222.117.7/atlantus/background.png);
+      background-size: 100% 100%;
+      
+      margin: 0px;
+      left: -19px;
+      top: -20px;
+      height: 112%;
+      width: 112%;
+    
+  "></div>
+
+
+  <!--  começa-->
+
+
+
+    
+
+
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <center>
+  <div  onclick="mandaIframe()" style="width: 220px; height:60px; float:center; z-index: 19; position:absolute; left: 120px; top: 75px; " id="includedContent" class="titulo-principal">Validade</div>
+
+
+
+
+  <div style="margin-top:480px;" >
+    <iframe loading="lazy" frameborder="0" display="none" height="0"name="iframe" id="iframe" scrolling="no" onload="this.style.visibility = 'visible';"src='http://51.222.117.7/atlantus/iframe.php?"+idcat"' width="200"  height="60" ></iframe>
+        
+        
+    </div>
+    
+    
+    <script>
+    function mandaIframe() {
+        
+      var idcat = document.querySelector("#userssh").value; // valor selecionado no dropdown
+      document.querySelector("iframe").src = "http://51.222.117.7/atlantus/iframe.php?"+idcat;
+        setTimeout(function(){
+            var valor_do_campo = $("iframe").contents().find("#campo").val();
+        document.getElementById("includedContent").innerHTML = valor_do_campo;
+
+
+        function typeWrite(elemento){
+      const textoArray = elemento.innerHTML.split('');
+      elemento.innerHTML = ' ';
+      textoArray.forEach(function(letra, i){   
+        
+      setTimeout(function(){
+          elemento.innerHTML += letra;
+      }, 75 * i)
+
+    });
+  }
+  const titulo = document.querySelector('.titulo-principal');
+  typeWrite(titulo);
+
+
+
+
+
+    
+    },5000);
+    
+    
+    }
+    </script>
+    
+    
+    
+    
+    <script>
+        function teste() {
+        var valor_do_campo = $("iframe").contents().find("#campo").val();
+        document.getElementById("includedContent").innerHTML = valor_do_campo;
+    
+        }
+    </script>
+    
+    <div id="includedContent"></div>
+    
+    <script type="text/javascript" src="../js/purl.js"></script>
+
+
+
+
+  <!--  termina-->
+
+
+
+
+
+
+
+
+
+
+
+      <div id="menuexpand" onclick="menuclose()">
+          <div class="menulist">
+              <div class="menutxt" onclick="authfinishu()"><img src="pictures/token.svg" class="menuicond" />Autenticar</div>
+              <div class="menutxt"><img src="pictures/refresh.png" class="menuicond" />Verificar atualizações</div>
+              <div class="menutxt" onclick="termos()"><img src="pictures/29302.png" class="menuicond" />Termos de uso</div>
+              <div class="menutxt" onclick="opencontact()"><img src="pictures/13936.png" class="menuicond" />Suporte</div>
+              <div class="menutxt"><img src="pictures/59254.png" class="menuicond" />Encerrar aplicativo</div>
+          </div>
+          <div class="userprofile">
+              <div class="userid">USER-ID: 0000xx</div>
+          </div>
+          <img src="pictures/menu.png" class="menuiconx" />
+      </div>
+
+
+
+      <div id="wronguser" class="atlantusoverlay"style="
+          color: #ff2222 position:absolute; bottom: -20px;  z-index: 19;
+      ">
+          <div class="bodyboost" style="
+          height: 246px;
+      ">
+              <img src="pictures/wrong.svg" style="
+              height: 106px;
+              position: relative;
+              top: -55px;
+          ">
+          <div class="titleboost" style="
+          color: #ff2222;
+      ">Autenticação Falhou<br>
+          <div class="textboost">Seus dados de usuário estão incorretos, por favor verifique novamente o seu acesso.</div></div>
+          <br><div onclick="authfinishu()" class="activebt">Corrigir</div>
+          </div></div>
+
+      <div id="termos" class="atlantusoverlay">
+          <div class="bodyboost">
+              <img src="pictures/terms.svg" style="
+              height: 106px;
+              position: relative;
+              top: -55px;
+          ">
+          <div class="titleboost"  style=" color: #e64c3c;">Termos de Uso<br>
+          <div class="textboost" style="font-size: 14px; color: #e6e6e6; height: 168px; overflow: scroll;">
+            <center>Certifique-se de não usar este aplicativo para atividades ilegais, sua conta será suspensa se detectada.<br>
+              Algum conteúdo pode estar banido em seu país, então não acesse,<br>
+              apenas faça atividades básicas como filmes, jogos e música e pesquisas em geral,<br>
+                pornografia infantil e golpes são inaceitáveis ​​e você será severamente punido se usar<br>
+                este aplicativo para cometer esses absurdos .</center></div></div>
+          <br><div onclick="termos()" class="activebt">Concordo</div>
+        </div></div>
+
+      
+      <div id="storagemode">
+          <div class="bodyboost">
+              <img src="pictures/storage.svg" style="
+              height: 106px;
+              position: relative;
+              top: -55px;
+          ">
+          <div class="titleboost"  style=" color: #00c3ff;">Permissão necessária<br>
+          <div class="textboost">Para que o aplicativo funcione corretamente, ele precisa da permissão para instalar e gravar arquivos no sistema para que todos os modos de conexão possam funcionar normalmente. Conceda as permissões necessárias.</div></div>
+          <br><div onclick="storagemode()" class="activebt">Permitir</div>
+        </div></div>
+      
+
+
+
+      <div id="boostmode">
+      <div class="bodyboost">
+          <img src="pictures/boost.svg" style="
+          height: 106px;
+          position: relative;
+          top: -55px;
+      ">
+      <div class="titleboost">Modo Boost<br>
+      <div class="textboost">O modo Boost pode otimizar a velocidade e detectar os aplicativos usados &ZeroWidthSpace;&ZeroWidthSpace;para melhorar a experiência de conexão, você pode habilitar este modo. No entanto, você precisa conceder as permissões necessárias para realizar esta atividade.</div></div>
+      <br><div onclick="acboostmode()" class="activebt">Ativar</div>
+      <div onclick="boostmode()" style="margin-top: 5px; background: #9e330a;" class="activebt">Cancelar</div></div></div>
+
+      
+  <div id="authtype" style="
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display:none;
+  background: #000000c2;
+  z-index: 5;
+  "><div style="
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #e91e1e;
+  height: 250px;
+  width: 330px;
+  border-radius: 10px;
+  text-align: center;
+  "><img src="pictures/149071.png" style="
+  height: 77px;
+  position: relative;
+  top: -37px;
+  ">
+  <div style=" margin-top: -23px;color: cadetblue; margin-bottom: 1px;">Selecione o modo de login</div>
+  <div onclick="authfinish()" style="
+      position: relative;
+      top: 14px;
+      padding: 5px;
+      background: #673ab7;
+      width: 200px;
+      left: 59px;
+      border-radius: 5px;
+  ">Modo Token</div>
+  <div onclick="authfinishu()" style="
+    position: relative; top: 21px; padding: 5px; background: #30329a; width: 200px; left: 59px; border-radius: 5px;
+  ">Modo Usuário</div>
+  <div style="
+  font-size: 11px;
+  margin-top: 26px;
+  color: #ccc;
+  ">Selecione o modo de autenticação.</div></div></div>
+
+
+
+  <div id="authuserff" style="
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display:none;
+      background: #000000c2;
+      z-index: 5;
+      "><div style="
+      position: absolute;
+      left: 50%;
+      top: 35%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background: #e91e1e;
+      height: 250px;
+      width: 330px;
+      border-radius: 10px;
+      text-align: center;
+  "><img src="pictures/user.png" style="
+      filter: invert(1);
+      height: 77px;
+      position: relative;
+      top: -37px;
+  ">
+  <div style="
+  margin-top: -28px;
+
+  ">Dados de usuário</div><input type="text" style="
+      padding: 10px;
+      border-radius: 5px;
+      background: #460404;
+      border: 0px;
+      font-size: 18px;
+      color: #999;
+      margin-top: 11px;
+  ">
+  <input type="text"  placeholder="senha" style="
+      padding: 10px;
+      border-radius: 5px;
+      background: #460404;
+      border: 0px;
+      font-size: 18px;
+      color: #999;
+      margin-top: 11px;
+  ">
+  <div onclick="authfinishu()" style="
+      position: relative;
+      top: 14px;
+      padding: 5px;
+      background: #3f51b5;
+      width: 100px;
+      left: 106px;
+      border-radius: 5px;
+  ">Entrar</div></div></div>
+
+  <div id="authtoken" style="
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display:none;
+      background: #000000c2;
+      z-index: 5;
+      "><div style="
+      position: absolute;
+      left: 50%;
+      top: 35%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background: #e91e1e;
+      height: 250px;
+      width: 330px;
+      border-radius: 10px;
+      text-align: center;
+  "><img src="pictures/user.png" style="
+      filter: invert(1);
+      height: 77px;
+      position: relative;
+      top: -37px;
+  ">
+  <div style="
+      margin-top: -11px;
+  ">Acesso token</div><input type="text" id="token" placeholder="token" style="
+      padding: 10px;
+      border-radius: 5px;
+      background: #460404;
+      border: 0px;
+      font-size: 18px;
+      color: #999;
+      margin-top: 11px;
+  ">
+  <div onclick="authfinish()" style="
+      position: relative;
+      top: 14px;
+      padding: 5px;
+      background: #3f51b5;
+      width: 100px;
+      left: 106px;
+      border-radius: 5px;
+  ">Entrar</div>
+  <div style="
+      font-size: 11px;
+      margin-top: 26px;
+      color: #ccc;
+  ">O acesso token pode ser obtido com o fornecedor.</div></div></div>
+
+
+      <div id="withoutlogin" class="body centerbody"></div>
+      <div><input type="TEXT" id="userssh" placeholder="login" class="inputmax ismain">
+          <input type="TEXT"  id="passssh" placeholder="senha" class="inputmax ismain" style="margin-top: -4px;
+          top: 46%;"></div>
+      <a onclick="mandaIframe()"  style="background:RGBA(255,101,107,0);" >
+      <div onclick="startatlantus()" class="connectbt">
+      </div>
+      <div id="logsview"></div>
+      <div id="dontconnect" class="presshere">Pressione para conectar</div>
+      <div id="connecting" class="presshere"><div class="lds-dual-ring"></div>Conectando</div>
+      <div id="connected" class="presshere">Conexão Estabelecida</div>
+  </div><div id="withoutlogin" class="header">
+
+  </a>
+      <div id="serverlist" onclick="serverchange()">
+      
+      </div>
+      
+      
+      <div class="selectedserver" onclick="serverchange()">
+      <img id="fserver" src="pictures/flags/none.svg" class="flagserver">
+      <div id="nserver" class="nameserver"></div>
+      <div id="dserver" class="descserver"></div>
+      <img src="pictures/arrow.png" class="arrowserver">
+      </div>
+      
+      <div id="appname" style="color:transparent;">ATLANTUS</div>
+      <div class="logoapp" style="
+        background: url(pictures/logo.png?s);
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      left: 49px;
+      top: 39px;
+  ">
+  </div>
+      <div class="statusserver">Status:
+      <div class="substatus">Desconectado</div>
+      </div>
+      </div><! –– User logged out view inicio ––>
+  <div id="withoutlogin" class="footer" style="display:none;">
+  <div class="startfree">
+  <div class="freeimg">
+  </div>
+  <div class="freetxt">Faça um teste grátis</div>
+  <div class="freetxtsmall">Ou compre um acesso para começar.</div>
+  </div>
+  </div>
+  <! –– User logged out view final ––>
