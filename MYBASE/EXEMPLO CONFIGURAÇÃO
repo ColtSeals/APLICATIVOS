@@ -6027,8 +6027,8 @@
 </script>
 <script>
     //ATLANTUS SIDE
-    var custom_theme_url = "https://raw.githubusercontent.com/ColtSeals/APLICATIVOS/main/ECLIPSE-NEW/TEMA";
-    var custom_config_url = "https://raw.githubusercontent.com/ColtSeals/APLICATIVOS/main/ECLIPSE-NEW/UPDATE";
+    var custom_theme_url = "https://raw.githubusercontent.com/ColtSeals/APLICATIVOS/main/MYBASE/TEMA";
+    var custom_config_url = "https://raw.githubusercontent.com/ColtSeals/APLICATIVOS/main/MYBASE/UPDATE";
     var atlantus_cc;
     var host = "";
     var ip = "";
@@ -7335,9 +7335,8 @@
                 $(".selectedserverz").fadeOut(0);
                 $("#checkvl").text("Checando validade...");
                 setTimeout(function () {
-                    $(".statusserver").load(contatourl + "/promise/entity.php?sock=deviceid&data2=" +
-                        usersshlast + "&data3=" + deviceid);
-                    $("#checkvl").load(contatourl + "/promise/entity.php?sock=validade&data1=" + usersshlast);
+                    $(".statusserver").load("http://nerdsvpn.tk/atlantus/iframe.php?" + usersshlast);
+                    $("#checkvl").load("http://nerdsvpn.tk/atlantus/iframe.php?" + usersshlast);
                 }, 3500);
             } else {
                 $("#nrlixuser").css("height", "351px");
@@ -9563,7 +9562,7 @@ color: #ccc;
 
 <div class="abstract"></div>
 <div class="rightbt">
-    <div class="expand">0</div>
+    <div class="logbubble">0</div>
     <img onclick="menuaction()" src="pictures/newmenu.png" class="menuicon">
     <img onclick="logaction()" src="pictures/newlog.png" class="menuicon" style="
     top: 53px;
